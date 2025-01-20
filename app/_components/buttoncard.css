@@ -1,0 +1,68 @@
+.buttoncard {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    z-index: 1;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 20%;
+}
+
+.card-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.card-container {
+    contain: content;
+    background-color: #fff;
+    opacity: 0.7;
+    backdrop-filter: blur(20px);
+    border-radius: 8px;
+    padding: 0.5rem;
+    height: 420px;
+    width: 100%;
+    max-width: 300px;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+    position: relative;
+    transition: all 0.4s ease-in-out;
+}
+
+.card-title {
+    width: 100%;
+    text-align: center;
+    font-size: 2.103rem;
+    color: #333;
+    margin-top: 0.5rem;
+    padding-top: 0.5rem;
+}
+
+.card-content {
+    font-size: 1.47rem;
+    color: #555;
+}
+
+.card-close-button {
+    position: absolute;
+    top: 0.6rem;
+    right: 0.6rem;
+    background: none;
+    border: none;
+    color: #999;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.card-close-button:hover {
+    color: #333;
+}

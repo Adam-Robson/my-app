@@ -1,0 +1,22 @@
+@media screen and (prefers-color-scheme: light) {
+    :root {
+      --text: #292929ff; 
+      --background:#e6e6e6ff; 
+      --primary: #434455ff;; 
+      --secondary: #bfb581ff; 
+      --accent: #aa6b67ff;
+      --complement: #abbdcaff; 
+    }
+  }
+  
+  @media screen and (prefers-color-scheme: dark) {
+    :root {
+      --text: #e6e6e6ff;  
+      --background: #292929ff; 
+      --primary: #abbdcaff;
+      --secondary: #bfb581ff; 
+      --accent: #aa6b67ff;
+      --complement: #434455ff; 
+    }
+  }
+  

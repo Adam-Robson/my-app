@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  color: var(--text);
+  background: var(--background);
+  font-family: Cairo_Play, Arial, Helvetica, sans-serif;
+  height: 100dvh;
+  width: 100dvw;
+}
+
+.homepage {
+  height: 100dvh;
+  width: 100dvw;
+}
+

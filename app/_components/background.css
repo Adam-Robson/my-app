@@ -1,0 +1,13 @@
+
+.background {
+    height: 100%;
+    width: 100%;
+    background-image: url('/primary_spheres.svg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0.7;
+    filter: blur(2px);
+    z-index: -1;
+  }
+  
