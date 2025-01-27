@@ -9,6 +9,7 @@ export default function AudioPlayer() {
   return (
     <div className="audio-player">
         <AudioPlaylist />
+        
         <div className="now-playing">
           {playback && (
             <>
