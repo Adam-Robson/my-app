@@ -18,7 +18,7 @@ export default function Buttoncard() {
           <FiSpeaker size={48} />
       </button>
       {isCardVisible && (
-        <div className="card-overlay">
+        <div className={`card-overlay ${isCardVisible ? 'visible' : ''}`}>
           <div className="card-container">
             <button className="card-close-button" onClick={onClose}>
               <FiX size={28} />

@@ -5,7 +5,7 @@
 body {
   color: var(--text);
   background: var(--background);
-  font-family: Cairo_Play, Arial, Helvetica, sans-serif;
+  font-family: Fira_Sans, Arial, Helvetica, sans-serif;
   height: 100dvh;
   width: 100dvw;
 }
@@ -13,10 +13,41 @@ body {
 .homepage {
   height: 100dvh;
   width: 100dvw;
-  display: grid;
-  place-items: center;
-
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
+
+.page {
+  background: var(--background);
+}
+
+.page-text {
+  color: var(--text);
+}
+
+.navlink {
+  color: var(--text);
+  font-size: 1.5rem;
+}
+
+.navlink:hover {
+  color: var(--secondary);
+}
+
+.back-link {
+  color: var(--text);
+  position: absolute;
+  top: 1rem;
+  left: 3rem;
+}
+
+.back-link:hover {
+  color: var(--primary);
+}
+
+
 
 
 
