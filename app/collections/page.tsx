@@ -2,11 +2,13 @@
 
 import { useState } from 'react';
 import CollectionsCard from '@/collections/collections-card';
-import Modal from '@/collections/modal';
+import CollectionModal from '@/collections/modal';
 import { collections } from '@/_data/collections';
 import { ICollection } from '@/_types/collections';
-import Link from 'next/link';
 import { FiChevronLeft } from 'react-icons/fi';
+import Link from 'next/link';
+import "./collections.css";
+
 
 export default function CollectionsPage() {
   const [selectedCollection, setSelectedCollection] = useState<ICollection | null>(null);
@@ -27,7 +29,7 @@ export default function CollectionsPage() {
         ))}
       </div>
       {selectedCollection && (
-        <Modal
+        <CollectionModal
           album={selectedCollection}
           onClose={() => setSelectedCollection(null)}
         />

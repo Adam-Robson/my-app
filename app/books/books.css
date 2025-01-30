@@ -37,7 +37,7 @@
     color: var(--text);
     border-radius: 0.25rem;
     padding: 0.5rem 1rem;
-    transition: background-color 0.2s ease, color 0.2s ease;
+    transition: all 0.2s ease-in-out;
   }
   
   .book-link:hover {

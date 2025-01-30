@@ -2,8 +2,9 @@
 
 import { FiX } from 'react-icons/fi';
 import Image from 'next/image';
+import "./collections.css";
 
-export default function AlbumModal({
+export default function CollectionModal({
   album,
   onClose,
 }: {

@@ -3,9 +3,9 @@ import Background from './_components/background';
 
 export default function Home() {
   return (
-    <div className="homepage">
+    <div className="homepage can">
       <Background />
-      <Link href="/collections" className="navlink">collections</Link>
+      <Link href="/collections" className="navlink txt">collections</Link>
     </div>
   );
 }

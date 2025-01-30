@@ -1,11 +1,10 @@
 .audio-player {
   position: relative;
   width: 100%;
-  max-width: 320px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   contain: content;
 }
@@ -19,7 +18,7 @@
 }
 
 .now-playing {
-  min-height: 75px;
+  min-height: 50px;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -40,4 +39,11 @@
 .song-timing {
   text-align: center;
   font-size: 1rem;
+}
+
+.player-logo {
+  max-width: 300px; 
+  height: auto;
+  margin-right: 1rem;
+  align-self: center;
 }

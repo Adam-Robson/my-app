@@ -9,6 +9,12 @@
   z-index: 10000;
 }
 
+@media screen and (min-width = 480px) {
+  .audio-controls {
+    max-width: 420px;
+  }
+}
+
 .song-controls {
   max-width: 280px;
   width: 100%;

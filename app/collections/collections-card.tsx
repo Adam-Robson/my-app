@@ -1,4 +1,5 @@
 import Image from "next/image";
+import "./collections.css";
 
 export default function CollectionsCard({
     collection,
