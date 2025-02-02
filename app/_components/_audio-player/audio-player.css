@@ -13,8 +13,8 @@
   bottom: 20%;
   opacity: 1;
   visibility: visible;
-  background-color: var(--primary);
-  color: var(--background);
+  background-color: var(--t100);
+  color: var(--b200);
 }
 
 .now-playing {

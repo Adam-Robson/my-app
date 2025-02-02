@@ -14,7 +14,7 @@
   font-size: 1.3rem;
   line-height: 1.5;
   text-align: center;
-  color: var(--text);
+  color: var(--t200);
 }
 
 @media (min-width: 640px) {

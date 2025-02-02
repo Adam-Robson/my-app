@@ -21,27 +21,27 @@ body {
 }
 
 .page-text {
-  color: var(--text);
+  color: var(--t200);
 }
 
 .navlink {
-  color: var(--text);
+  color: var(--t100);
   font-size: 1.5rem;
 }
 
 .navlink:hover {
-  color: var(--secondary);
+  color: var(--s200);
 }
 
 .back-link {
-  color: var(--text);
+  color: var(--t300);
   position: absolute;
   top: 1rem;
   left: 3rem;
 }
 
 .back-link:hover {
-  color: var(--primary);
+  color: var(--p200);
 }
 
 
