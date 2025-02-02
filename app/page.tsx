@@ -6,6 +6,8 @@ export default function Home() {
     <div className="homepage can">
       <Background />
       <Link href="/collections" className="navlink txt">collections</Link>
+      <Link href="/about" className="navlink txt">about</Link>
+      <Link href="/contact" className="navlink txt">contact</Link>
     </div>
   );
 }
