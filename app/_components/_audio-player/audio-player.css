@@ -4,7 +4,7 @@
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   contain: content;
 }
@@ -13,12 +13,12 @@
   bottom: 20%;
   opacity: 1;
   visibility: visible;
-  background-color: var(--primary-2);
-  color: var(--background-0);
+  background-color: var(--t100);
+  color: var(--b200);
 }
 
 .now-playing {
-  min-height: 75px;
+  min-height: 50px;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -41,19 +41,9 @@
   font-size: 1rem;
 }
 
-@media screen and (min-width: 640px) {
-  .player-card {
-    max-width: 240px;
-    min-height: 340px;
-    font-size: 1.5rem;
-  }
-}
-
-@media screen and (min-width: 768px) {
-
-  .player-card {
-    max-width: 360px;
-    min-height: 400px;
-    font-size: 1.6rem;
-  }
+.player-logo {
+  max-width: 300px; 
+  height: auto;
+  margin-right: 1rem;
+  align-self: center;
 }

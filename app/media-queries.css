@@ -1,0 +1,82 @@
+.can {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+  
+.txt {
+  font-size: 1.3rem;
+  line-height: 1.5;
+  text-align: center;
+  color: var(--t200);
+}
+
+@media (min-width: 640px) {
+  .can {
+    max-width: 540px;
+  }
+  .txt {
+    font-size: 1.4rem;
+  }
+
+  .h1 {
+    font-size: 2.1rem;
+  }
+}
+  
+@media (min-width: 768px) {
+  .can {
+    max-width: 720px;
+    flex-direction: row;
+  }
+  .txt {
+    font-size: 1.65rem;
+  }
+  .h1 {
+    font-size: 2.5rem;
+  }
+}
+  
+@media (min-width: 1024px) {
+  .can {
+    max-width: 960px;
+  }
+  .txt {
+    font-size: 1.8rem;
+  }
+  .h1 {
+    font-size: 2.8rem;
+  }
+}
+
+  
+@media (min-width: 1280px) {
+  .can {
+    max-width: 1140px;
+  }
+  .txt {
+    font-size: 1.9rem;
+  }
+  .h1 {
+    font-size: 3rem;
+  }
+}
+
+@media (min-width: 1536px) {
+  .can {
+    max-width: 1320px;
+  }
+
+  .txt {
+    font-size: 1.8rem;
+  }
+  .h1 {
+    font-size: 3.2rem;
+  }
+}

@@ -1,8 +1,9 @@
 
 .background {
+    position: absolute;
     height: 100%;
     width: 100%;
-    background-image: url('/primary_spheres.svg');
+    background-image: url('/images/primary_spheres.svg');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;

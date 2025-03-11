@@ -5,13 +5,46 @@
 body {
   color: var(--text);
   background: var(--background);
-  font-family: Cairo_Play, Arial, Helvetica, sans-serif;
+  font-family: Fira_Sans, Arial, Helvetica, sans-serif;
   height: 100dvh;
   width: 100dvw;
+}
+
+.h1 {
+  font-size: 2rem;
+  font-weight: 500;
 }
 
 .homepage {
   height: 100dvh;
   width: 100dvw;
 }
+
+.page-text {
+  color: var(--t200);
+}
+
+.navlink {
+  color: var(--t100);
+  font-size: 1.5rem;
+}
+
+.navlink:hover {
+  color: var(--s200);
+}
+
+.back-link {
+  color: var(--t300);
+  position: absolute;
+  top: 1rem;
+  left: 3rem;
+}
+
+.back-link:hover {
+  color: var(--p200);
+}
+
+
+
+
 
