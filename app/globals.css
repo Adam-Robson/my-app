@@ -1,26 +1,108 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --eerie-black: #212529ff;
+  --jet: #363537ff;
+  --outer-space: #495057ff;
+  --onyx: #515052ff;
+  --reseda: #727d71ff;
+  --slate-gray: #6c757dff;
+  --almond: #e2d0beff;
+  --french-gray: #ced4daff;
+  --platinum: #dee2e6ff;
+  --white-smoke: #f1edeeff;
+  --wenge: #63535bff;
+  --coral: #ef8354ff;
+  --atomic-tangerine: #f39b6dff;
+  
+  --monda: 'Monda', 'sans-serif';
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+html, body {
+  --background: var(--white-smoke);
+  --foreground: var(--eerie-black);
+  --primary: var(--wenge);
+  --secondary: var(--french-gray);
+  --accent: var(--atomic-tangerine);
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  font-family: var(--monda);
+  font-weight: 300;
+  transition:
+    background-color 0.4s ease,
+    color 0.3s ease;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html.dark body {
+  --background: var(--eerie-black);
+  --foreground: var(--white-smoke);
+  --primary: var(--platinum);
+  --secondary: var(--reseda);
+  --accent: var(--coral);
+  color: var(--background);
+  background: linear-gradient(
+    112deg, 
+    var(--eerie-black) 0%,
+    var(--jet) 22%,
+    var(--outer-space) 58%,
+    var(--onyx) 88%,
+    var(--slate-gray) 100%
+  );
 }
 
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  min-height: 100dvh;
+  width: 100dvw;
+}
+
+body.light {
+  background-image: url('/gradient.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.root {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+header {
+  background-color: var(--background);
+  color: var(--foreground);
+  max-width: 1210px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+main {
+  background-color: var(--secondary);
+  color: var(--primary);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+footer {
+  background-color: var(--background);
+  color: var(--foreground);
+  max-width: 1210px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
