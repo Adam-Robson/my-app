@@ -1,7 +1,6 @@
-import { type PlaylistType } from '@/app/types/playlist';
+import { SongType } from '../types/song';
 
-export const playlist: PlaylistType = {
-  tracks: [
+export const playlist: SongType[] = [
     {
       id: '1',
       title: 'blanket blanket',
@@ -27,4 +26,3 @@ export const playlist: PlaylistType = {
       duration: '6:49',
     }
   ]
-}

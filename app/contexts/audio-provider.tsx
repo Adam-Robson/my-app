@@ -1,16 +1,17 @@
 'use client';
 
-import React, {
+import {
   createContext,
   useContext,
-  useEffect,
   useRef,
   useState,
+  useEffect,
   ReactNode,
 } from 'react';
 import { Howl } from 'howler';
-import { AudioType, AudioProviderType } from '@/app/types/audio-provider';
+import { AudioProviderType } from '@/app/types/audio-provider';
 import { playlist as tracks } from '@/app/data/playlist';
+import { SongType } from '../types/song';
 
 const AudioPlayerContext = createContext<AudioProviderType | undefined>(undefined);
 
@@ -18,70 +19,95 @@ export function useAudio(): AudioProviderType {
   const context = useContext(AudioPlayerContext);
   if (!context) throw new Error('useAudio must be used within AudioPlayerProvider');
   return context;
-};
+}
 
 export function AudioPlayerProvider({ children }: { children: ReactNode }) {
   const soundRef = useRef<Howl | null>(null);
-  
-  const [playlist] = useState<AudioType[]>(tracks)
+
+  const [playlist] = useState<SongType[]>(tracks);
+  const [currentTrack, setCurrentTrack] = useState<SongType | null>(null);
+
   const [playback, setPlayback] = useState(false);
-  const [volume, setVolumeState] = useState(1);
+  const [volume, setVolume] = useState(1);
   const [muted, setMuted] = useState(false);
   const [elapsed, setElapsed] = useState(0);
   const [duration, setDuration] = useState(0);
-  const [currentTrack, setCurrentTrack] = useState<AudioType | null>(null);
-  const [interaction, setInteraction] = useState(false);
+
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [userInteracted, setUserInteracted] = useState(false);
 
+  // Track first user interaction (to allow audio playback)
   useEffect(() => {
-    localStorage.setItem('volume', String(volume));
-  }, [volume]);
-
-  useEffect(() => {
-    const index = currentTrack
-      ? tracks.findIndex((t) => t.src === currentTrack.src)
-      : -1;
-    if (index >= 0) {
-      localStorage.setItem('trackIndex', String(index));
-    }
-  }, [currentTrack]);
-  
-  useEffect(() => {
-    const mark = () => setInteraction(true);
-
+    const mark = () => setUserInteracted(true);
     window.addEventListener('click', mark, { once: true });
     window.addEventListener('keydown', mark, { once: true });
-
     return () => {
       window.removeEventListener('click', mark);
       window.removeEventListener('keydown', mark);
     };
   }, []);
+  
+    useEffect(() => {
+    const savedVolume = parseFloat(localStorage.getItem('volume') || '1');
+    const savedIndex = parseInt(localStorage.getItem('trackIndex') || '0', 10);
 
-  // ensure track is always set
-  useEffect(() => {
-    if (!currentTrack && playlist.length > 0) {
-      setTrack(playlist[0]);
-    } 
-  }, [currentTrack, playlist]);
+    if (!isNaN(savedVolume)) setVolume(savedVolume);
+    if (!isNaN(savedIndex) && playlist[savedIndex]) {
+      setCurrentTrack(playlist[savedIndex]);
+    } else if (playlist.length > 0) {
+      setCurrentTrack(playlist[0]);
+    }
+  }, [playlist]);
+  
+    const loadTrack = (track: SongType) => {
+    if (soundRef.current) {
+      soundRef.current.stop();
+      soundRef.current.unload();
+    }
 
-  const setTrack = (track: AudioType) => {
+    setLoading(true);
+    const sound = new Howl({
+      src: [track.src],
+      html5: true,
+      autoplay: false,
+      volume,
+      mute: muted,
+      onload: () => {
+        setDuration(sound.duration());
+        setLoading(false);
+        setError(null);
+      },
+      onplay: () => setPlayback(true),
+      onpause: () => setPlayback(false),
+      onend: () => {
+        setPlayback(false);
+        setElapsed(0);
+        next(); // autoplay next track
+      },
+      onloaderror: (_, err) => {
+        setError(`Error loading: ${err}`);
+        setLoading(false);
+      },
+    });
+
+    soundRef.current = sound;
+  };
+
+  const setTrack = (track: SongType, autoPlay = false) => {
     setCurrentTrack(track);
+    const index = playlist.findIndex(t => t.src === track.src);
+    if (index >= 0) localStorage.setItem('trackIndex', String(index));
+
+    loadTrack(track);
+    if (autoPlay && userInteracted) soundRef.current?.play();
   };
   
-  const getCurrentIndex = () => {
-    return currentTrack ? playlist.findIndex(t => t.src === currentTrack.src) : -1;
-  }
   const play = () => {
-    if (!interaction) return;
-
-    if (!soundRef.current && currentTrack) {
-      loadAndPlay(currentTrack);
-    } else {
-      soundRef.current?.play();
-      setPlayback(true);
-    }
+    if (!userInteracted || !currentTrack) return;
+    if (!soundRef.current) loadTrack(currentTrack);
+    soundRef.current?.play();
+    setPlayback(true);
   };
 
   const pause = () => {
@@ -95,123 +121,56 @@ export function AudioPlayerProvider({ children }: { children: ReactNode }) {
     setElapsed(0);
   };
 
-  const setVolume = (vol: number) => {
-    setVolumeState(vol);
+  const toggleMute = () => {
+    setMuted(!muted);
+    soundRef.current?.mute(!muted);
+  };
+
+  const updateVolume = (vol: number) => {
+    setVolume(vol);
     soundRef.current?.volume(vol);
-    if (vol === 0 && !muted) {
+    if (vol === 0) {
       setMuted(true);
       soundRef.current?.mute(true);
-    } else if (vol > 0 && muted) {
+    } else if (muted) {
       setMuted(false);
       soundRef.current?.mute(false);
     }
+    localStorage.setItem('volume', String(vol));
   };
   
-  const toggleMute = () => {
-    const newMuted = !muted;
-    setMuted(newMuted);
-    soundRef.current?.mute(newMuted);
-  };
-  
-  const next = () => {
-    const index = getCurrentIndex();
-    if (playlist.length === 0) return;
-
-    const nextIndex = (index + 1) % playlist.length;
-    setCurrentTrack(playlist[nextIndex]);
-  };
-
-  const previous = () => {
-    const index = getCurrentIndex();
-    if (playlist.length === 0) return;
-
-    const prevIndex = (index - 1 + playlist.length) % playlist.length;
-    setCurrentTrack(playlist[prevIndex]);
-  };
-
-  const loadAndPlay = (track: AudioType) => {
-    if (soundRef.current) {
-      soundRef.current.stop();
-      soundRef.current.unload();
-    }
-
-    setLoading(true);
-    const sound = new Howl({
-      src: [track.src],
-      html5: true,
-      volume,
-      onload: () => {
-        setDuration(sound.duration());
-        setLoading(false);
-        setError(null);
-      },
-      onplay: () => {
-        setPlayback(true);
-      },
-      onpause: () => {
-        setPlayback(false);
-      },
-      onend: () => {
-        setPlayback(false);
-        setElapsed(0);
-        next();
-      },
-      onloaderror: (_, err) => {
-        setError(`Error loading: ${err}`);
-        setLoading(false);
-      },
-    });
-
-    soundRef.current = sound;
-    sound.play();
-  };
-  
-  // load the volume and the current track from local storage is saved
   useEffect(() => {
-    const savedVolume = localStorage.getItem('volume');
-    const savedIndex = localStorage.getItem('trackIndex');
+    let frameId: number;
 
-    if (savedVolume !== null) {
-      const vol = parseFloat(savedVolume);
-      setVolumeState(vol);
-    }
-
-    if (savedIndex !== null) {
-      const index = parseInt(savedIndex, 10);
-      if (!isNaN(index) && tracks[index]) {
-        setCurrentTrack(tracks[index]);
-      }
-    }
-  }, []);
-
-  // Auto-load new track when set
-  useEffect(() => {
-    if (currentTrack) {
-      loadAndPlay(currentTrack);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentTrack]);
-
-  // Track elapsed time
-  useEffect(() => {
-    let animationFrameId: number;
-
-    const updateElapsed = () => {
-      const sound = soundRef.current;
-      if (sound?.playing()) {
-        setElapsed(sound.seek() as number);
-        animationFrameId = requestAnimationFrame(updateElapsed);
+    const trackTime = () => {
+      if (soundRef.current?.playing()) {
+        setElapsed(soundRef.current.seek() as number);
+        frameId = requestAnimationFrame(trackTime);
       }
     };
 
-    if (playback) {
-      animationFrameId = requestAnimationFrame(updateElapsed);
-    }
-
-    return () => cancelAnimationFrame(animationFrameId);
+    if (playback) frameId = requestAnimationFrame(trackTime);
+    return () => cancelAnimationFrame(frameId);
   }, [playback]);
 
+  const getIndex = () => currentTrack ? playlist.findIndex(t => t.src === currentTrack.src) : -1;
+
+  const next = () => {
+    const i = getIndex();
+    if (i < 0 || playlist.length === 0) return;
+    const nextTrack = playlist[(i + 1) % playlist.length];
+    setTrack(nextTrack, true);
+  };
+
+  const previous = () => {
+    const i = getIndex();
+    if (i < 0 || playlist.length === 0) return;
+    const prevTrack = playlist[(i - 1 + playlist.length) % playlist.length];
+    setTrack(prevTrack, true);
+  };
+  
   const value: AudioProviderType = {
+    playlist,
     playback,
     volume,
     muted,
@@ -227,7 +186,7 @@ export function AudioPlayerProvider({ children }: { children: ReactNode }) {
     play,
     pause,
     stop,
-    setVolume,
+    setVolume: updateVolume,
   };
 
   return (
@@ -235,4 +194,4 @@ export function AudioPlayerProvider({ children }: { children: ReactNode }) {
       {children}
     </AudioPlayerContext.Provider>
   );
-};
+}

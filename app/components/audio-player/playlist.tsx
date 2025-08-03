@@ -15,16 +15,13 @@ export default function Playlist({ tracks }: PlaylistType) {
       shadow-lg max-h-64 overflow-y-auto
       transition-all duration-400
       animate-slideUp
-    `}>
-                  
+    `}>         
         <ul className="p-4 space-y-2 text-sm">
           {tracks.map((track: SongType) => (
-          
             <li
               key={track.id}
-              className={`cursor-pointer hover:scale-105 ${currentTrack?.src === track.src ? 'text-blue-400 font-medium' : ''}`}
+              className={`cursor-pointer hover:text-gray-400 ${currentTrack?.src === track.src ? 'text-amber-800 font-medium' : ''}`}
               onClick={() => setTrack(track)}>{track.title}</li>
-          
           ))}    
         </ul>           
     </div>

@@ -1,14 +1,7 @@
-export interface AudioType {
-  id?: string;
-  title: string;
-  src: string;
-  artist?: string;
-  album?: string;
-  cover?: string;
-  duration?: string; 
-}
+import { SongType } from "./song";
 
 export interface AudioProviderType {
+  playlist: SongType[];
   playback: boolean;
   volume: number;
   muted: boolean;
@@ -19,10 +12,10 @@ export interface AudioProviderType {
   duration: number;
   loading: boolean;
   error: string | null;
-  currentTrack: AudioType | null;
+  currentTrack: SongType | null;
   play: () => void;
   pause: () => void;
   stop: () => void;
   setVolume: (vol: number) => void;
-  setTrack: (track: AudioType) => void;
+  setTrack: (track: SongType) => void;
 }
