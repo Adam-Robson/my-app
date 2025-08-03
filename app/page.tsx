@@ -1,7 +1,9 @@
+'use client';
+
 import Header from '@/app/header';
+import Main from '@/app/main';
 import Footer from '@/app/footer';
 import Providers from '@/app/components/providers/providers';
-import ThemeToggle from '@/app/components/theme/theme-toggle';
 
 export default function Home() {
   return (
@@ -12,7 +14,7 @@ export default function Home() {
    `}>
       <Providers>
         <Header />
-        <ThemeToggle />
+        <Main />
         <Footer />
       </Providers>
    </div>

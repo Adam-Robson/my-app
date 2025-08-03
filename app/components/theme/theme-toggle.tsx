@@ -8,7 +8,7 @@ export default function ThemeToggle() {
   return (
     <button
       onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
-      className="text-sm px-3 py-1 border rounded"
+      className="text-sm px-3 py-1 rounded"
     >
       Toggle Theme ({theme})
     </button>

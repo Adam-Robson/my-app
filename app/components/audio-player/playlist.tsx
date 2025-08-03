@@ -1,39 +1,32 @@
 'use client';
 
 import { useAudio } from '@/app/contexts/audio-provider';
-import { AudioType } from '@/app/types/audio-provider';
-import clsx from 'clsx';
+import { SongType } from '@/app/types/song';
+import type {PlaylistType} from '@/app/types/playlist';
 
-interface PlaylistProps {
-  tracks: AudioType[];
-}
-
-export default function Playlist({ tracks }: PlaylistProps) {
-  const { currentTrack, setTrack, playback } = useAudio();
+export default function Playlist({ tracks }: PlaylistType) {
+  const { setTrack, currentTrack } = useAudio();
 
   return (
-    <div className="flex flex-col gap-2 w-full max-w-md">
-      <h2 className="text-xl font-bold mb-2">Playlist</h2>
-      <ul className="flex flex-col gap-1">
-        {tracks.map((track, index) => {
-          const isActive = currentTrack?.src === track.src;
-          return (
+    <div className={`
+      absolute bottom-full left-0
+      w-full bg-neutral-800
+      border-t border-neutral-600
+      shadow-lg max-h-64 overflow-y-auto
+      transition-all duration-400
+      animate-slideUp
+    `}>
+                  
+        <ul className="p-4 space-y-2 text-sm">
+          {tracks.map((track: SongType) => (
+          
             <li
-              key={index}
-              className={clsx(
-                'p-3 rounded cursor-pointer transition-all',
-                isActive
-                  ? 'bg-blue-600 text-white'
-                  : 'bg-gray-100 hover:bg-gray-200'
-              )}
-              onClick={() => setTrack(track)}
-            >
-              {track.title}
-              {isActive && playback && ' 🔊'}
-            </li>
-          );
-        })}
-      </ul>
+              key={track.id}
+              className={`cursor-pointer hover:scale-105 ${currentTrack?.src === track.src ? 'text-blue-400 font-medium' : ''}`}
+              onClick={() => setTrack(track)}>{track.title}</li>
+          
+          ))}    
+        </ul>           
     </div>
   );
 }

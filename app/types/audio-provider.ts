@@ -4,13 +4,17 @@ export interface AudioType {
   src: string;
   artist?: string;
   album?: string;
-  coverImageUrl?: string;
-  duration?: number; 
+  cover?: string;
+  duration?: string; 
 }
 
 export interface AudioProviderType {
   playback: boolean;
   volume: number;
+  muted: boolean;
+  toggleMute: () => void;
+  next: () => void;
+  previous: () => void;
   elapsed: number;
   duration: number;
   loading: boolean;

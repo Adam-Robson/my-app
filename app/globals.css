@@ -44,7 +44,7 @@ html[data-theme="dark"] body {
 }
 
 html[data-theme="light"] body {
-  background-image: url('/gradient.png');
+  background-image: url('/images/gradient.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -60,9 +60,7 @@ body {
   height: 100%;
   font-family: var(--monda);
   font-weight: 300;
-  transition:
-  background-color 0.4s ease,
-    color 0.3s ease;
+  transition: background-color 0.4s ease, color 0.3s ease;
   min-height: 100dvh;
   width: 100dvw;
   overflow-x: hidden;
