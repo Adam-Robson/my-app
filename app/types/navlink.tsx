@@ -8,4 +8,7 @@ export type NavlinkType = {
   hovered?: boolean;
   setHovered?: (hovered: boolean) => void;
   className?: string;
+  x?: number;
+  y?: number;
+  i?: number;
 }
