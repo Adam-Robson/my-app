@@ -9,9 +9,9 @@ import {
   VinylRecordIcon,
 } from '@phosphor-icons/react';
 
+
 export default function Navigation() {
   const pathname = usePathname();
-
   const links = [
     { href: '/', label: 'Home', icon: <HouseIcon /> },
     { href: '/about', label: 'About', icon: <ApproximateEqualsIcon /> },
@@ -36,10 +36,17 @@ export default function Navigation() {
         transition-opacity duration-300
       ">
         {navlinks.map((link) => (
-          <div key={link.href} className="group/nav flex items-center gap-2 transition">
-            <Link href={link.href} className="text-base hover:underline flex items-center gap-2">
+          <div key={link.href} className={`
+            group/nav flex items-center gap-2 transition
+          `}>
+            <Link href={link.href} className={`
+              text-base hover:underline flex items-center gap-2
+            `}>
               {link.label}
-              <span className="opacity-0 group-hover/nav:opacity-100 transition-opacity duration-200">
+              <span className={`
+                opacity-0 group-hover/nav:opacity-100
+                transition-opacity duration-200
+              `}>
                 {link.icon}
               </span>
             </Link>
