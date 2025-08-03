@@ -12,14 +12,14 @@ export const playlist: SongType[] = [
     {
       id: '2',
       title: 'wear it long',
-      src: '',
+      src: '/audio/wear it long.mp3',
       artist: 'le fog',
       album: 'hi five your self (unreleased)',
       duration: '2:42',
     },
     {
       id: '3',
-      title: 'your voice.mp3',
+      title: 'your voice',
       src: '/audio/your voice.mp3',
       artist: 'le fog',
       album: 'hi five your self (unreleased)',

@@ -48,7 +48,7 @@ export function AudioPlayerProvider({ children }: { children: ReactNode }) {
     };
   }, []);
   
-    useEffect(() => {
+  useEffect(() => {
     const savedVolume = parseFloat(localStorage.getItem('volume') || '1');
     const savedIndex = parseInt(localStorage.getItem('trackIndex') || '0', 10);
 
@@ -60,39 +60,54 @@ export function AudioPlayerProvider({ children }: { children: ReactNode }) {
     }
   }, [playlist]);
   
-    const loadTrack = (track: SongType) => {
-    if (soundRef.current) {
-      soundRef.current.stop();
-      soundRef.current.unload();
-    }
+  const loadTrack = (track: SongType) => {
+  if (soundRef.current) {
+    soundRef.current.stop();
+    soundRef.current.unload();
+  }
 
-    setLoading(true);
-    const sound = new Howl({
-      src: [track.src],
-      html5: true,
-      autoplay: false,
-      volume,
-      mute: muted,
-      onload: () => {
-        setDuration(sound.duration());
-        setLoading(false);
-        setError(null);
-      },
-      onplay: () => setPlayback(true),
-      onpause: () => setPlayback(false),
-      onend: () => {
-        setPlayback(false);
-        setElapsed(0);
-        next(); // autoplay next track
-      },
-      onloaderror: (_, err) => {
-        setError(`Error loading: ${err}`);
-        setLoading(false);
-      },
-    });
+  setLoading(true);
 
-    soundRef.current = sound;
-  };
+  const sound = new Howl({
+    src: [track.src],
+    html5: true,
+    autoplay: false,
+    volume,
+    mute: muted,
+    onload: () => {
+      setDuration(sound.duration());
+      setLoading(false);
+      setError(null);
+    },
+    onplay: () => {
+      setPlayback(true);
+
+      // Start updating elapsed time immediately
+      const update = () => {
+        if (sound.playing()) {
+          setElapsed(sound.seek() as number);
+          requestAnimationFrame(update);
+        }
+      };
+      requestAnimationFrame(update);
+    },
+    onpause: () => {
+      setPlayback(false);
+    },
+    onend: () => {
+      setPlayback(false);
+      setElapsed(0);
+      next(); // advance to next track
+    },
+    onloaderror: (_, err) => {
+      setError(`Error loading: ${err}`);
+      setLoading(false);
+    },
+  });
+
+  soundRef.current = sound;
+  sound.play();
+};
 
   const setTrack = (track: SongType, autoPlay = false) => {
     setCurrentTrack(track);

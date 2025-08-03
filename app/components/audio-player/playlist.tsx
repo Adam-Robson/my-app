@@ -11,8 +11,7 @@ export default function Playlist({ tracks }: PlaylistType) {
     <div className={`
       absolute bottom-full left-0
       w-full bg-neutral-800
-      border-t border-neutral-600
-      shadow-lg max-h-64 overflow-y-auto
+      shadow-lg rounded max-h-64 overflow-y-auto
       transition-all duration-400
       animate-slideUp
     `}>         
