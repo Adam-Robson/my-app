@@ -1,29 +1,59 @@
 @import "tailwindcss";
 
 :root {
-  --eerie-black: #212529ff;
-  --jet: #363537ff;
-  --outer-space: #495057ff;
-  --onyx: #515052ff;
-  --reseda: #727d71ff;
-  --slate-gray: #6c757dff;
-  --almond: #e2d0beff;
-  --french-gray: #ced4daff;
-  --platinum: #dee2e6ff;
-  --white-smoke: #f1edeeff;
-  --wenge: #63535bff;
-  --coral: #ef8354ff;
-  --atomic-tangerine: #f39b6dff;
+  --eerie: hsla(210, 11%, 15%, 1);
+  --jet: hsla(270, 2%, 21%, 1);
+  --space: hsla(210, 9%, 31%, 1);
+  --onyx: hsla(270, 1%, 32%, 1);
+  --slate: hsla(208, 7%, 46%, 1);
+  --french: hsla(210, 14%, 83%, 1);
+  --platinum: hsla(210, 14%, 89%, 1);
+  --smoke: hsla(345, 12%, 94%, 1);
+  --wenge: hsla(330, 9%, 36%, 1);
+  --coral: hsla(18, 83%, 63%, 1);
+  --tang: hsla(21, 85%, 69%, 1);
   
   --monda: 'Monda', 'sans-serif';
+  
+  --background: var(--smoke);
+  --foreground: var(--eerie);
+  --primary: var(--wenge);
+  --secondary: var(--french);
+  --accent: var(--tang);
 }
 
-html, body {
-  --background: var(--white-smoke);
-  --foreground: var(--eerie-black);
-  --primary: var(--wenge);
-  --secondary: var(--french-gray);
-  --accent: var(--atomic-tangerine);
+html[data-theme="dark"] {
+  --background: var(--jet);
+  --foreground: var(--platinum);
+  --primary: var(--french);
+  --secondary: var(--slate);
+  --accent: var(--coral);
+}
+
+html[data-theme="dark"] body {
+  background: linear-gradient(
+    112deg,
+    hsla(210, 10%, 4%, 1) 0%,
+    hsla(210, 10%, 4%, 1) 21%,
+    hsla(204, 12%, 8%, 1) 52%,
+    hsla(206, 11%, 12%, 1) 88%,
+    hsla(207, 11%, 12%, 1) 100%
+  );
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+html[data-theme="light"] body {
+  background-image: url('/gradient.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+body {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
   width: 100%;
@@ -31,46 +61,9 @@ html, body {
   font-family: var(--monda);
   font-weight: 300;
   transition:
-    background-color 0.4s ease,
+  background-color 0.4s ease,
     color 0.3s ease;
-}
-
-html.dark body {
-  --background: var(--eerie-black);
-  --foreground: var(--white-smoke);
-  --primary: var(--platinum);
-  --secondary: var(--reseda);
-  --accent: var(--coral);
-  color: var(--background);
-  background: linear-gradient(
-    112deg, 
-    var(--eerie-black) 0%,
-    var(--jet) 22%,
-    var(--outer-space) 58%,
-    var(--onyx) 88%,
-    var(--slate-gray) 100%
-  );
-}
-
-body {
-  background-color: var(--background);
-  color: var(--foreground);
   min-height: 100dvh;
   width: 100dvw;
-  overflow: hidden;
-}
-
-body.light {
-  background-image: url('/gradient.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-.root {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  overflow-x: hidden;
 }
