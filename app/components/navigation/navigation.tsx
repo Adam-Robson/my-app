@@ -40,7 +40,7 @@ export default function Navigation() {
   const links: NavlinkType[] = navlinks.filter(
     (link: NavlinkType) => link.href !== pathname
   );
-  
+  const round4 = (num: number) => Math.round(num * 10000) / 10000;
   const radius = 140; // distance from center (px)
   const c = 90; // center angle (deg)
   const spread = 120; // spread angle (deg)
@@ -60,8 +60,8 @@ export default function Navigation() {
           const step = links.length > 1 ? spread / (links.length - 1) : 0;
           const deg = c - spread / 2 + step * i;
           const rad = (deg * Math.PI) / 180;
-          const x = Math.cos(rad) * radius;
-          const y = Math.sin(rad) * radius;
+          const x = round4(Math.cos(rad) * radius);
+          const y = round4(Math.sin(rad) * radius);
           return (
             <Navlink
               key={link.href}
