@@ -1,108 +1,116 @@
 @import "tailwindcss";
 
 :root {
-  --eerie-black: #212529ff;
-  --jet: #363537ff;
-  --outer-space: #495057ff;
-  --onyx: #515052ff;
-  --reseda: #727d71ff;
-  --slate-gray: #6c757dff;
-  --almond: #e2d0beff;
-  --french-gray: #ced4daff;
-  --platinum: #dee2e6ff;
-  --white-smoke: #f1edeeff;
-  --wenge: #63535bff;
-  --coral: #ef8354ff;
-  --atomic-tangerine: #f39b6dff;
+  /* b&w */
+  --eerie: hsla(0, 0%, 17%, 1);
+  --space: hsla(210, 9%, 31%, 1);
+  --slate: hsla(208, 7%, 46%, 1);
+  /* palette */
+  --honeydew: hsla(102, 21%, 88%, 1);
+  --beige: hsla(66, 64%, 94%, 1);
+  --chiffon: hsla(53, 76%, 87%, 1);
+  --peach: hsla(41, 64%, 77%, 1);
+  --buff: hsla(28, 53%, 68%, 1);
+  --orangey: hsla(28, 56%, 55%, 1);
+  /* whites */
+  --platinum: hsla(210, 14%, 89%, 1);
+  --isabelline: hsla(60, 12%, 92%, 1);
+  --ghost: hsla(240, 44%, 96%, 1);
+  --smoke: hsla(0, 0%, 96%, 1);
+  --baby: hsla(60, 29%, 97%, 1);
+  --powder: hsla(192, 24%, 92%, 1);
+  --white: hsla(0, 0%, 100%, 1);
   
   --monda: 'Monda', 'sans-serif';
 }
 
-html, body {
-  --background: var(--white-smoke);
-  --foreground: var(--eerie-black);
-  --primary: var(--wenge);
-  --secondary: var(--french-gray);
-  --accent: var(--atomic-tangerine);
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  height: 100%;
-  font-family: var(--monda);
-  font-weight: 300;
-  transition:
-    background-color 0.4s ease,
-    color 0.3s ease;
-}
-
-html.dark body {
-  --background: var(--eerie-black);
-  --foreground: var(--white-smoke);
-  --primary: var(--platinum);
-  --secondary: var(--reseda);
-  --accent: var(--coral);
-  color: var(--background);
-  background: linear-gradient(
-    112deg, 
-    var(--eerie-black) 0%,
-    var(--jet) 22%,
-    var(--outer-space) 58%,
-    var(--onyx) 88%,
-    var(--slate-gray) 100%
+html[data-theme="dark"] body {
+  --canvas: linear-gradient(
+    112deg,
+    hsla(210, 10%, 4%, 1) 0%,
+    hsla(210, 10%, 4%, 1) 21%,
+    hsla(204, 12%, 8%, 1) 52%,
+    hsla(206, 11%, 12%, 1) 88%,
+    hsla(207, 11%, 12%, 1) 100%
   );
+  
+  --background: var(--eerie);
+  
+  --text-primary: var(--powder);
+  --text-secondary: var(--platinum);
+
+  --tile: var(--space);
+  --border: var(--slate);
+  --button: var(--chiffon);
+  
+  --primary: var(--beige);
+  --secondary: var(--honeydew);
+  --complement: var(--peach);
+  --accent: var(--buff)
+};
+
+html[data-theme="light"] body {
+  --canvas: linear-gradient(
+    315deg, 
+    var(--chiffon) 0%, 
+    var(--beige) 15%, 
+    var(--chiffon) 69%,
+    var(--peach) 88%,
+    var(--chiffon) 100%
+  );
+  
+  --background: var(--baby);
+  
+  --text-primary: var(--eerie);
+  --text-secondary: var(--space);
+  
+  --tile: var(--platinum);
+  --border: var(--slate);
+  --button: var(--beige);
+  
+  --primary: var(--chiffon);
+  --secondary: var(--buff);
+  --complement: var(--peach);
+  --accent: var(--orangey);
 }
 
 body {
-  background-color: var(--background);
-  color: var(--foreground);
-  min-height: 100dvh;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  height: 100dvh;
   width: 100dvw;
+  overflow-x: hidden;
+  background: var(--canvas);
+  color: var(--text-primary);
+  font-family: var(--monda);
+  font-weight: 300;
 }
 
-body.light {
-  background-image: url('/gradient.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+button {
+  background-color: var(--button);
+  color: var(--text-primary);
+  border: none;
+  padding: 0.5rem 1.1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.4s ease-in-out, outline 0.3s ease;
 }
 
-.root {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+button:hover {
+  background-color: var(--complement);
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  cursor: pointer;
 }
 
-header {
-  background-color: var(--background);
-  color: var(--foreground);
-  max-width: 1210px;
-  width: 100%;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
+a {
+  text-decoration: none;
+  color: var(--text-primary);
 }
 
-main {
-  background-color: var(--secondary);
-  color: var(--primary);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-footer {
-  background-color: var(--background);
-  color: var(--foreground);
-  max-width: 1210px;
-  width: 100%;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
+a:hover {
+  text-decoration: underline;
+  color: var(--text-secondary);
+  cursor: pointer;
 }
