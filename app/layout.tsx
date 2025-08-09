@@ -1,5 +1,9 @@
+
 import type { Metadata } from "next";
+
 import { Monda } from "next/font/google";
+
+import PageWrapper from '@/app/components/loader/page-wrapper';
 import "./globals.css";
 
 const monda = Monda({
@@ -22,7 +26,9 @@ export default function RootLayout({
       <body
         className={`${monda.variable} antialiased`}
       >
+        <PageWrapper>
         {children}
+        </PageWrapper>
       </body>
     </html>
   );

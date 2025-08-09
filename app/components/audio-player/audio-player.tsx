@@ -39,13 +39,21 @@ export default function AudioPlayer({showPlayer, setShowPlayer}: AudioPlayerType
   };
 
   return (
-      <div>
+      <div className="">
         {
           showPlayer && (
             <div className="max-w-md min-w-sm w-full fixed bottom-4 left-1/2 transform -translate-x-1/2 z-50">
-              <div className="w-full max-w-screen-sm bg-[var(--secondary)] text-[var(--foreground)] rounded shadow-lg px-4 py-3 flex flex-col gap-2">
+              <div className={`
+                w-full max-w-screen-sm bg-[var(--secondary)]
+                text-[var(--text-primary)] rounded shadow-lg
+                px-4 py-3 flex flex-col gap-2
+              `}>
               
-              <button onClick={() => setShowPlayer(false)} title="Hide player">
+              <button 
+                onClick={() => setShowPlayer(false)}
+                title="Hide player"
+                className="max-w-12"
+              >
                 <XIcon size={18}/>
               </button>
               
@@ -54,13 +62,13 @@ export default function AudioPlayer({showPlayer, setShowPlayer}: AudioPlayerType
                   <Playlist tracks={playlist} />
                 )}
               
-                <div className="flex-1 truncate text-sm font-medium">
+                <div className="h-full w-full flex-1 truncate text-sm font-medium">
                   {loading ? (
                     <SpinnerBallIcon className="w-5 h-5" size={18} />
                   ) : error ? (
                     <WarningIcon className="w-5 h-5" size={18} />
                   ) : (
-                    currentTrack?.title ?? 'No song loaded'
+                    currentTrack?.title || 'No song loaded'
                   )}
                 </div>
 

@@ -1,37 +1,28 @@
 @import "tailwindcss";
 
 :root {
-  --eerie: hsla(210, 11%, 15%, 1);
-  --jet: hsla(270, 2%, 21%, 1);
+  /* b&w */
+  --eerie: hsla(0, 0%, 17%, 1);
   --space: hsla(210, 9%, 31%, 1);
-  --onyx: hsla(270, 1%, 32%, 1);
   --slate: hsla(208, 7%, 46%, 1);
-  --french: hsla(210, 14%, 83%, 1);
   --platinum: hsla(210, 14%, 89%, 1);
-  --smoke: hsla(345, 12%, 94%, 1);
-  --wenge: hsla(330, 9%, 36%, 1);
-  --coral: hsla(18, 83%, 63%, 1);
-  --tang: hsla(21, 85%, 69%, 1);
+  --baby-powder: hsla(192, 24%, 92%, 1);
+  --white: hsla(0, 0%, 100%, 1);
+  
+  /* palette */
+  --honeydew: hsla(102, 21%, 88%, 1);
+  --beige: hsla(66, 64%, 94%, 1);
+  --chiffon: hsla(53, 76%, 87%, 1);
+  --peach: hsla(41, 64%, 77%, 1);
+  --buff: hsla(28, 53%, 68%, 1);
+  --orangey: hsla(28, 56%, 55%, 1);
+  
   
   --monda: 'Monda', 'sans-serif';
-  
-  --background: var(--smoke);
-  --foreground: var(--eerie);
-  --primary: var(--wenge);
-  --secondary: var(--french);
-  --accent: var(--tang);
-}
-
-html[data-theme="dark"] {
-  --background: var(--jet);
-  --foreground: var(--platinum);
-  --primary: var(--french);
-  --secondary: var(--slate);
-  --accent: var(--coral);
 }
 
 html[data-theme="dark"] body {
-  background: linear-gradient(
+  --canvas: linear-gradient(
     112deg,
     hsla(210, 10%, 4%, 1) 0%,
     hsla(210, 10%, 4%, 1) 21%,
@@ -39,29 +30,78 @@ html[data-theme="dark"] body {
     hsla(206, 11%, 12%, 1) 88%,
     hsla(207, 11%, 12%, 1) 100%
   );
-  background-color: var(--background);
-  color: var(--foreground);
-}
+  
+  --background: var(--eerie);
+  --tile: var(--space);
+  --text-primary: var(--baby-powder);
+  --text-secondary: var(--platinum);
+  --border: var(--slate);
+  --primary: var(--honeydew);
+  --secondary: var(--peach);
+  --button: var(--chiffon);
+  --complement: var(--beige);
+  --accent: var(--buff)
+};
 
 html[data-theme="light"] body {
-  background-image: url('/images/gradient.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-color: var(--background);
-  color: var(--foreground);
+  --canvas: linear-gradient(
+    315deg, 
+    var(--honeydew) 0%, 
+    var(--beige) 35%, 
+    var(--chiffon) 69%,
+    var(--peach) 88%,
+    var(--chiffon) 100%
+  );
+  
+  --background: var(--baby-powder);
+  --tile: var(--platinum);
+  --text-primary: var(--eerie);
+  --text-secondary: var(--space);
+  --border: var(--slate);
+  --primary: var(--peach);
+  --secondary: var(--buff);
+  --button: var(--honeydew);
+  --complement: var(--chiffon);
+  --accent: var(--orangey);
 }
 
 body {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  width: 100%;
-  height: 100%;
-  font-family: var(--monda);
-  font-weight: 300;
-  transition: background-color 0.4s ease, color 0.3s ease;
-  min-height: 100dvh;
+  height: 100dvh;
   width: 100dvw;
   overflow-x: hidden;
+  background: var(--canvas);
+  color: var(--text-primary);
+  font-family: var(--monda);
+  font-weight: 300;
+}
+
+button {
+  background-color: var(--secondary);
+  color: var(--background);
+  border: none;
+  padding: 0.5rem 1.1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.4s ease-in-out, outline 0.3s ease;
+}
+
+button:hover {
+  background-color: var(--complement);
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+  color: var(--text-primary);
+}
+
+a:hover {
+  text-decoration: underline;
+  color: var(--text-secondary);
+  cursor: pointer;
 }
