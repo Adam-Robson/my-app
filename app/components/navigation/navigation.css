@@ -47,7 +47,7 @@
 }
 
 .nav-item:hover {
-  background: var(--secondary);
+  background: var(--complement);
   color: var(--border);
 }
 
@@ -57,5 +57,5 @@
 }
 
 .nav-item:hover .nav-item-icon {
-  color: var(--accent);
+  color: var(--primary);
 }

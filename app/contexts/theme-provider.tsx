@@ -21,7 +21,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
       : 'light';
 
     const saved = localStorage.getItem('theme') as ThemeType | null;
-    const initial = saved ?? systemPref;
+    const initial = systemPref ?? saved;
 
     setTheme(initial);
     document.documentElement.setAttribute('data-theme', initial);

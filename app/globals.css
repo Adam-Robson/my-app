@@ -5,10 +5,6 @@
   --eerie: hsla(0, 0%, 17%, 1);
   --space: hsla(210, 9%, 31%, 1);
   --slate: hsla(208, 7%, 46%, 1);
-  --platinum: hsla(210, 14%, 89%, 1);
-  --baby-powder: hsla(192, 24%, 92%, 1);
-  --white: hsla(0, 0%, 100%, 1);
-  
   /* palette */
   --honeydew: hsla(102, 21%, 88%, 1);
   --beige: hsla(66, 64%, 94%, 1);
@@ -16,7 +12,14 @@
   --peach: hsla(41, 64%, 77%, 1);
   --buff: hsla(28, 53%, 68%, 1);
   --orangey: hsla(28, 56%, 55%, 1);
-  
+  /* whites */
+  --platinum: hsla(210, 14%, 89%, 1);
+  --isabelline: hsla(60, 12%, 92%, 1);
+  --ghost: hsla(240, 44%, 96%, 1);
+  --smoke: hsla(0, 0%, 96%, 1);
+  --baby: hsla(60, 29%, 97%, 1);
+  --powder: hsla(192, 24%, 92%, 1);
+  --white: hsla(0, 0%, 100%, 1);
   
   --monda: 'Monda', 'sans-serif';
 }
@@ -32,36 +35,42 @@ html[data-theme="dark"] body {
   );
   
   --background: var(--eerie);
-  --tile: var(--space);
-  --text-primary: var(--baby-powder);
+  
+  --text-primary: var(--powder);
   --text-secondary: var(--platinum);
+
+  --tile: var(--space);
   --border: var(--slate);
-  --primary: var(--honeydew);
-  --secondary: var(--peach);
   --button: var(--chiffon);
-  --complement: var(--beige);
+  
+  --primary: var(--beige);
+  --secondary: var(--honeydew);
+  --complement: var(--peach);
   --accent: var(--buff)
 };
 
 html[data-theme="light"] body {
   --canvas: linear-gradient(
     315deg, 
-    var(--honeydew) 0%, 
-    var(--beige) 35%, 
+    var(--chiffon) 0%, 
+    var(--beige) 15%, 
     var(--chiffon) 69%,
     var(--peach) 88%,
     var(--chiffon) 100%
   );
   
-  --background: var(--baby-powder);
-  --tile: var(--platinum);
+  --background: var(--baby);
+  
   --text-primary: var(--eerie);
   --text-secondary: var(--space);
+  
+  --tile: var(--platinum);
   --border: var(--slate);
-  --primary: var(--peach);
+  --button: var(--beige);
+  
+  --primary: var(--chiffon);
   --secondary: var(--buff);
-  --button: var(--honeydew);
-  --complement: var(--chiffon);
+  --complement: var(--peach);
   --accent: var(--orangey);
 }
 
@@ -79,8 +88,8 @@ body {
 }
 
 button {
-  background-color: var(--secondary);
-  color: var(--background);
+  background-color: var(--button);
+  color: var(--text-primary);
   border: none;
   padding: 0.5rem 1.1rem;
   border-radius: 4px;
