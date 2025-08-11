@@ -44,14 +44,14 @@ export default function Navigation() {
   return (
     <nav className={`
       nav-container group cursor-pointer
-      h-full w-80
+      h-full w-60
     `}>
       <div className="nav-icon">
         <Image 
           src="/images/3.svg" 
           alt="le fog logo" 
-          height={180} 
-          width={180} 
+          height={200} 
+          width={200} 
           className={`
             object-center 
             object-contain block 

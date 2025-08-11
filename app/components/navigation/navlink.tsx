@@ -26,9 +26,10 @@ export default function Navlink({ href, label, icon, i }: NavlinkType) {
           focus-visible:outline-2 
           focus-visible:outline-offset-2 
           focus-visible:outline-[var(--accent)]
+          
         `}
       >
-        <span className="flex-1 text-left text-sm font-medium truncate">
+        <span className="flex-1 text-left text-sm lg:text-base font-medium truncate">
           {label}
         </span>
         <span

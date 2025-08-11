@@ -2,75 +2,76 @@
 
 :root {
   /* b&w */
-  --eerie: hsla(0, 0%, 17%, 1);
+  --black: hsla(210, 0%, 0%, 1);
+  --eerie: hsla(0, 0%, 13%, 1);
+  --onyx: hsla(210, 1%, 16%, 1);
+  --jet: hsla(210, 2%, 19%, 1);
   --space: hsla(210, 9%, 31%, 1);
   --slate: hsla(208, 7%, 46%, 1);
-  /* palette */
-  --honeydew: hsla(102, 21%, 88%, 1);
-  --beige: hsla(66, 64%, 94%, 1);
-  --chiffon: hsla(53, 76%, 87%, 1);
-  --peach: hsla(41, 64%, 77%, 1);
-  --buff: hsla(28, 53%, 68%, 1);
   --orangey: hsla(28, 56%, 55%, 1);
-  /* whites */
-  --platinum: hsla(210, 14%, 89%, 1);
-  --isabelline: hsla(60, 12%, 92%, 1);
-  --ghost: hsla(240, 44%, 96%, 1);
-  --smoke: hsla(0, 0%, 96%, 1);
-  --baby: hsla(60, 29%, 97%, 1);
+  --cadet: hsla(195, 16%, 56%, 1);
+  --buff: hsla(28, 53%, 68%, 1);
+  --puff: hsla(214, 17%, 71%, 1);
+  --peach: hsla(41, 64%, 77%, 1);
+  --flax: hsla(57, 68%, 78%, 1);
+  --chiffon: hsla(53, 76%, 87%, 1);
+  --beige: hsla(66, 64%, 94%, 1);
+  --honeydew: hsla(102, 21%, 88%, 1);
+
+  --platinum: hsla(209, 35%, 87%, 1);
+  --ghost: hsla(209, 23.33%, 91.33%, 1);
   --powder: hsla(192, 24%, 92%, 1);
   --white: hsla(0, 0%, 100%, 1);
   
+  /* font */
   --monda: 'Monda', 'sans-serif';
+  --barlow: 'Barlow', 'sans-serif';
 }
 
 html[data-theme="dark"] body {
   --canvas: linear-gradient(
-    112deg,
-    hsla(210, 10%, 4%, 1) 0%,
-    hsla(210, 10%, 4%, 1) 21%,
-    hsla(204, 12%, 8%, 1) 52%,
-    hsla(206, 11%, 12%, 1) 88%,
-    hsla(207, 11%, 12%, 1) 100%
+    148deg,
+    var(--black) 0%,
+    var(--eerie) 51%,
+    var(--onyx) 100%
   );
+  background: var(--canvas);
   
   --background: var(--eerie);
-  
   --text-primary: var(--powder);
-  --text-secondary: var(--platinum);
+  --text-secondary: var(--jet);
 
-  --tile: var(--space);
-  --border: var(--slate);
+  --tile: var(--slate);
+  --border: var(--space);
   --button: var(--chiffon);
   
-  --primary: var(--beige);
-  --secondary: var(--honeydew);
+  --primary: var(--buff);
+  --secondary: var(--flax);
   --complement: var(--peach);
-  --accent: var(--buff)
+  --accent: var(--orangey)
 };
 
 html[data-theme="light"] body {
   --canvas: linear-gradient(
-    315deg, 
-    var(--chiffon) 0%, 
-    var(--beige) 15%, 
-    var(--chiffon) 69%,
-    var(--peach) 88%,
-    var(--chiffon) 100%
+    330deg, 
+    hsla(209, 0%, 100%, 1) 0%,
+    hsla(209, 13.33%, 98.33%, 1) 26%,
+    hsla(209, 23.33%, 91.33%, 1) 86%,
+    hsla(209, 35%, 87%, 1) 100%
   );
   
-  --background: var(--baby);
+  --background: var(--canvas);
   
   --text-primary: var(--eerie);
-  --text-secondary: var(--space);
+  --text-secondary: var(--ghost);
   
-  --tile: var(--platinum);
-  --border: var(--slate);
-  --button: var(--beige);
+  --tile: var(--beige);
+  --border: var(--space);
+  --button: var(--chiffon);
   
-  --primary: var(--chiffon);
-  --secondary: var(--buff);
-  --complement: var(--peach);
+  --primary: var(--slate);
+  --secondary: var(--puff);
+  --complement: var(--flax);
   --accent: var(--orangey);
 }
 
@@ -89,7 +90,7 @@ body {
 
 button {
   background-color: var(--button);
-  color: var(--text-primary);
+  color: var(--border);
   border: none;
   padding: 0.5rem 1.1rem;
   border-radius: 4px;
