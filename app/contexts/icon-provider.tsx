@@ -6,10 +6,9 @@ export default function IconProvider({ children }: { children: React.ReactNode }
   return (
     <IconContext.Provider
       value={{
-        color: 'currentColor',
-        size: 24,
-        weight: 'regular',
-        mirrored: false,
+          size: 32, // default size in px
+          weight: "regular", // "thin" | "light" | "regular" | "bold" | "fill" | "duotone"
+          color: "currentColor", // inherits text color
       }}
     >
       {children}
