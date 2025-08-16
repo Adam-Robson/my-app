@@ -2,13 +2,13 @@
 
 :root {
   /* b&w */
-  --black: hsla(210, 0%, 0%, 1);
   --eerie: hsla(0, 0%, 13%, 1);
   --onyx: hsla(210, 1%, 16%, 1);
   --jet: hsla(210, 2%, 19%, 1);
   --space: hsla(210, 9%, 31%, 1);
   --slate: hsla(208, 7%, 46%, 1);
   --orangey: hsla(28, 56%, 55%, 1);
+  --vermillion: hsla(4, 92%, 60%, 1);
   --cadet: hsla(195, 16%, 56%, 1);
   --buff: hsla(28, 53%, 68%, 1);
   --puff: hsla(214, 17%, 71%, 1);
@@ -21,58 +21,51 @@
   --platinum: hsla(209, 35%, 87%, 1);
   --ghost: hsla(209, 23.33%, 91.33%, 1);
   --powder: hsla(192, 24%, 92%, 1);
-  --white: hsla(0, 0%, 100%, 1);
-  
+  --smoke: rgb(239, 240, 240);
   /* font */
   --monda: 'Monda', 'sans-serif';
   --barlow: 'Barlow', 'sans-serif';
 }
 
 html[data-theme="dark"] body {
-  --canvas: linear-gradient(
-    148deg,
-    var(--black) 0%,
-    var(--eerie) 51%,
-    var(--onyx) 100%
-  );
-  background: var(--canvas);
-  
-  --background: var(--eerie);
-  --text-primary: var(--powder);
-  --text-secondary: var(--jet);
+  --canvas: linear-gradient(148deg,
+      black 0%,
+      var(--eerie) 81%,
+      var(--onyx) 100%);
 
-  --tile: var(--slate);
-  --border: var(--honeydew);
-  --button: var(--chiffon);
-  
-  --primary: var(--buff);
-  --secondary: var(--flax);
-  --complement: var(--peach);
-  --accent: var(--orangey)
-};
+  background: var(--canvas);
+  --background: black;
+  --text: white;
+  --text-50: var(--platinum);
+  --primary: var(--orangey);
+  --primary-50: var(--buff);
+  --secondary: var(--cadet);
+  --secondary-50: var(--puff);
+  --accent: var(--peach);
+  --accent-50: var(--chiffon);
+  --alert: var(--vermillion);
+  --alert-50: var(--flax);
+}
 
 html[data-theme="light"] body {
-  --canvas: linear-gradient(
-    330deg, 
-    hsla(209, 0%, 100%, 1) 0%,
-    hsla(209, 13.33%, 98.33%, 1) 26%,
-    hsla(209, 23.33%, 91.33%, 1) 86%,
-    hsla(209, 35%, 87%, 1) 100%
-  );
-  
-  --background: var(--canvas);
-  
-  --text-primary: var(--eerie);
-  --text-secondary: var(--ghost);
-  
-  --tile: var(--beige);
-  --border: var(--buff);
-  --button: var(--chiffon);
-  
-  --primary: var(--slate);
+  --canvas: linear-gradient(330deg,
+      hsla(209, 0%, 100%, 1) 0%,
+      hsla(209, 13.33%, 98.33%, 1) 26%,
+      hsla(209, 23.33%, 91.33%, 1) 86%,
+      hsla(209, 35%, 87%, 1) 100%);
+
+  background: var(--canvas);
+  --background: white;
+  --text: black;
+  --text-50: var(--jet);
+  --primary: var(--buff);
+  --primary-50: var(--orangey);
   --secondary: var(--puff);
-  --complement: var(--flax);
-  --accent: var(--orangey);
+  --secondary-50: var(--cadet);
+  --accent: var(--chiffon);
+  --accent-50: var(--peach);
+  --alert: var(--flax);
+  --alert-50: var(--vermillion);
 }
 
 body {
@@ -83,35 +76,33 @@ body {
   width: 100dvw;
   overflow-x: hidden;
   background: var(--canvas);
-  color: var(--text-primary);
-  font-family: var(--monda);
-  font-weight: 300;
+  color: var(--text);
+  font-family: var(--barlow);
+  font-weight: 400;
 }
 
 button {
-  background-color: var(--button);
-  color: var(--border);
+  background-color: transparent;
+  color: var(--text);
   border: none;
-  padding: 0.5rem 1.1rem;
   border-radius: 4px;
   cursor: pointer;
-  transition: background 0.4s ease-in-out, outline 0.3s ease;
+  transition: outline 0.3s ease;
 }
 
 button:hover {
-  background-color: var(--complement);
-  outline: 2px solid var(--accent);
-  outline-offset: 2px;
+  outline: 1px solid var(--accent);
+  outline-offset: 0.5rem;
   cursor: pointer;
 }
 
 a {
   text-decoration: none;
-  color: var(--text-primary);
+  color: var(--text);
 }
 
 a:hover {
   text-decoration: underline;
-  color: var(--text-secondary);
+  color: var(--text-50);
   cursor: pointer;
 }

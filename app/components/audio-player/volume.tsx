@@ -10,19 +10,19 @@ export default function Volume() {
   const { volume, setVolume, muted, toggleMute } = useAudio();
 
   const getIcon = () => {
-    if (muted || volume === 0) return <SpeakerSimpleXIcon size={18} />;
-    if (volume < 0.4) return <SpeakerSimpleLowIcon size={18} />;
-    if (volume < 0.7) return <SpeakerSimpleHighIcon size={18} />;
-    return <SpeakerSimpleNoneIcon size={18} />;
+    if (muted || volume === 0) return <SpeakerSimpleXIcon />;
+    if (volume < 0.4) return <SpeakerSimpleLowIcon />;
+    if (volume < 0.7) return <SpeakerSimpleHighIcon />;
+    return <SpeakerSimpleNoneIcon />;
   };
-  
+
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setVolume(parseFloat(event.target.value));
-    
+
   };
 
   return (
-    <div className="flex items-center gap-3 mt-4 w-full">
+    <div className="max-w-md w-full flex items-center flex-end gap-3 mt-4">
       <button
         onClick={toggleMute}
         className="text-[var(--foreground)] hover:text-[var(--accent)] transition-colors"

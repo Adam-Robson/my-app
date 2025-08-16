@@ -6,6 +6,7 @@ import {
   useRef,
   useState,
   useEffect,
+  useMemo,
   ReactNode,
 } from 'react';
 import { Howl } from 'howler';
@@ -47,7 +48,7 @@ export function AudioPlayerProvider({ children }: { children: ReactNode }) {
       window.removeEventListener('keydown', mark);
     };
   }, []);
-  
+
   useEffect(() => {
     const savedVolume = parseFloat(localStorage.getItem('volume') || '1');
     const savedIndex = parseInt(localStorage.getItem('trackIndex') || '0', 10);
@@ -59,55 +60,55 @@ export function AudioPlayerProvider({ children }: { children: ReactNode }) {
       setCurrentTrack(playlist[0]);
     }
   }, [playlist]);
-  
+
   const loadTrack = (track: SongType) => {
-  if (soundRef.current) {
-    soundRef.current.stop();
-    soundRef.current.unload();
-  }
+    if (soundRef.current) {
+      soundRef.current.stop();
+      soundRef.current.unload();
+    }
 
-  setLoading(true);
+    setLoading(true);
 
-  const sound = new Howl({
-    src: [track.src],
-    html5: true,
-    autoplay: false,
-    volume,
-    mute: muted,
-    onload: () => {
-      setDuration(sound.duration());
-      setLoading(false);
-      setError(null);
-    },
-    onplay: () => {
-      setPlayback(true);
+    const sound = new Howl({
+      src: [track.src],
+      html5: true,
+      autoplay: false,
+      volume,
+      mute: muted,
+      onload: () => {
+        setDuration(sound.duration());
+        setLoading(false);
+        setError(null);
+      },
+      onplay: () => {
+        setPlayback(true);
 
-      // Start updating elapsed time immediately
-      const update = () => {
-        if (sound.playing()) {
-          setElapsed(sound.seek() as number);
-          requestAnimationFrame(update);
-        }
-      };
-      requestAnimationFrame(update);
-    },
-    onpause: () => {
-      setPlayback(false);
-    },
-    onend: () => {
-      setPlayback(false);
-      setElapsed(0);
-      next(); // advance to next track
-    },
-    onloaderror: (_, err) => {
-      setError(`Error loading: ${err}`);
-      setLoading(false);
-    },
-  });
+        // Start updating elapsed time immediately
+        const update = () => {
+          if (sound.playing()) {
+            setElapsed(sound.seek() as number);
+            requestAnimationFrame(update);
+          }
+        };
+        requestAnimationFrame(update);
+      },
+      onpause: () => {
+        setPlayback(false);
+      },
+      onend: () => {
+        setPlayback(false);
+        setElapsed(0);
+        next(); // advance to next track
+      },
+      onloaderror: (_, err) => {
+        setError(`Error loading: ${err}`);
+        setLoading(false);
+      },
+    });
 
-  soundRef.current = sound;
-  sound.play();
-};
+    soundRef.current = sound;
+    sound.play();
+  };
 
   const setTrack = (track: SongType, autoPlay = false) => {
     setCurrentTrack(track);
@@ -117,7 +118,7 @@ export function AudioPlayerProvider({ children }: { children: ReactNode }) {
     loadTrack(track);
     if (autoPlay && userInteracted) soundRef.current?.play();
   };
-  
+
   const play = () => {
     if (!userInteracted || !currentTrack) return;
     if (!soundRef.current) loadTrack(currentTrack);
@@ -153,7 +154,25 @@ export function AudioPlayerProvider({ children }: { children: ReactNode }) {
     }
     localStorage.setItem('volume', String(vol));
   };
-  
+
+  const normalizedTrack = useMemo(() => {
+    if (!currentTrack) return undefined;
+    if (typeof currentTrack === 'object' && 'title' in currentTrack) {
+      return currentTrack as { title?: string };
+    }
+    if (typeof currentTrack === 'number') return playlist?.[currentTrack];
+    return undefined;
+  }, [currentTrack, playlist]);
+
+  const trackTitle = normalizedTrack?.title ?? '';
+
+  const safePct = useMemo(() => {
+    const d = Number(duration);
+    const e = Number(elapsed);
+    if (!Number.isFinite(d) || d <= 0 || !Number.isFinite(e) || e < 0) return 0;
+    return Math.max(0, Math.min(100, (e / d) * 100));
+  }, [elapsed, duration]);
+
   useEffect(() => {
     let frameId: number;
 
@@ -183,7 +202,7 @@ export function AudioPlayerProvider({ children }: { children: ReactNode }) {
     const prevTrack = playlist[(i - 1 + playlist.length) % playlist.length];
     setTrack(prevTrack, true);
   };
-  
+
   const value: AudioProviderType = {
     playlist,
     playback,
@@ -202,6 +221,9 @@ export function AudioPlayerProvider({ children }: { children: ReactNode }) {
     pause,
     stop,
     setVolume: updateVolume,
+    normalizedTrack: () => normalizedTrack ?? {},
+    trackTitle,
+    safePct: () => safePct
   };
 
   return (

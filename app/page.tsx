@@ -1,13 +1,13 @@
 'use client';
 
-import Header from '@/app/header';
-import Main from '@/app/main';
-import Footer from '@/app/footer';
+import Header from '@/app/components/layout/header';
+import Main from '@/app/components/layout/main';
+import Footer from '@/app/components/layout/footer';
 import Providers from '@/app/components/providers/providers';
 
 export default function Home() {
   return (
-   <div className={`
+    <div className={`
      root relative h-screen
      max-w-screen w-full mx-auto
      flex flex-col items-center
@@ -18,6 +18,6 @@ export default function Home() {
         <Main />
         <Footer />
       </Providers>
-   </div>
+    </div>
   );
 }

@@ -1,5 +1,4 @@
 'use client';
-import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import {
   ApproximateEqualsIcon,
@@ -10,6 +9,7 @@ import {
 import { type NavlinkType } from '@/app/types/navlink'
 import Navlink from '@/app/components/navigation/navlink';
 import '@/app/components/navigation/navigation.css';
+import SVGComponent from '@/app/components/navigation/svg-component';
 
 export const navlinks: NavlinkType[] = [
   {
@@ -35,8 +35,9 @@ export const navlinks: NavlinkType[] = [
 ]
 
 export default function Navigation() {
+
   const pathname = usePathname();
-  // do not show the current page
+  // do not show the current page in nav links
   const links: NavlinkType[] = navlinks.filter(
     (link: NavlinkType) => link.href !== pathname
   );
@@ -47,35 +48,23 @@ export default function Navigation() {
       h-full w-60
     `}>
       <div className="nav-icon">
-        <Image 
-          src="/images/3.svg" 
-          alt="le fog logo" 
-          height={200} 
-          width={200} 
-          className={`
-            object-center 
-            object-contain block 
-            pointer-events-none 
-            select-none cursor-pointer
-          `}
-        />
-        
-       <div className={`
+        <SVGComponent />
+        <div className={`
           nav-menu
         `}>
-        {links.map((link, i) => {
-          return (
-            <Navlink
-              key={link.href}
-              href={link.href}
-              label={link.label}
-              icon={link.icon}
-              i={i}
-            />          
-          )
-        })}
+          {links.map((link, i) => {
+            return (
+              <Navlink
+                key={link.href}
+                href={link.href}
+                label={link.label}
+                icon={link.icon}
+                i={i}
+              />
+            )
+          })}
         </div>
-        </div>
+      </div>
     </nav>
   );
 }

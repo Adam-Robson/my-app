@@ -18,4 +18,7 @@ export interface AudioProviderType {
   stop: () => void;
   setVolume: (vol: number) => void;
   setTrack: (track: SongType) => void;
+  normalizedTrack: () => {'title'?: string | undefined };
+  trackTitle?: string;
+  safePct: () => number;
 }
