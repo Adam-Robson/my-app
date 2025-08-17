@@ -1,7 +1,10 @@
+import { ReactNode } from 'react';
 import { SongType } from "./song";
 
 export interface AudioProviderType {
   playlist: SongType[];
+  showPlaylist: boolean;
+  setShowPlaylist: React.Dispatch<React.SetStateAction<boolean>>,
   playback: boolean;
   volume: number;
   muted: boolean;
@@ -21,4 +24,5 @@ export interface AudioProviderType {
   normalizedTrack: () => {'title'?: string | undefined };
   trackTitle?: string;
   safePct: () => number;
+  formatTime: (seconds: number) => ReactNode;
 }

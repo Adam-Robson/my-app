@@ -9,12 +9,13 @@ export default function ThemeToggle() {
   const isDark = theme === 'dark';
   return (
     <div className="theme-toggle-container">
-      <div
-        className="theme-toggle"
+      <button
+        className="theme-toggle absolute top-12 right-12"
         onClick={() => setTheme(isDark ? 'light' : 'dark')}
+        title="Toggle Theme"
       >
         {isDark ? <SunIcon /> : <MoonIcon />}
-      </div>
+      </button>
       <label className="theme-toggle-label text-sm text-center">
         {isDark ? 'light' : 'dark'}
       </label>

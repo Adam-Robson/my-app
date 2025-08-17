@@ -1,5 +1,5 @@
 /* -------------
-   Theme Toggle
+   Player Toggle
    ------------- */
 
 :root {
@@ -7,12 +7,22 @@
   --tt-dur: 0.5s;
 }
 
-/* Base button */
-.theme-toggle {
+.player-toggle-container {
+  position: absolute;
+  right: 3rem;
+  bottom: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.player-toggle {
+  outline: none;
+  padding: 0.6rem;
   color: var(--text-50);
   background: transparent;
   opacity: 0.9;
-  padding: 0.6rem;
   border-radius: 4px;
   box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0);
   transition:
@@ -21,20 +31,20 @@
     box-shadow var(--tt-dur) var(--tt-ease);
 }
 
-.theme-toggle:hover,
-.theme-toggle:focus-visible {
+.player-toggle:hover,
+.player-toggle:focus-visible {
   cursor: pointer;
   opacity: 1;
   color: var(--text);
   box-shadow: inset 0 0 0 1px currentColor;
 }
 
-.theme-toggle:hover,
-.theme-toggle:focus-visible {
-  animation: themeTogglePulse 0.6s var(--tt-ease) forwards;
+.player-toggle:hover,
+.player-toggle:focus-visible {
+  animation: playerTogglePulse 0.6s var(--tt-ease) forwards;
 }
 
-@keyframes themeTogglePulse {
+@keyframes playerTogglePulse {
   0% {
     transform: scale(1);
   }
@@ -48,7 +58,7 @@
   }
 }
 
-.theme-toggle-label {
+.player-toggle-label {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -62,8 +72,8 @@
     opacity var(--tt-dur) var(--tt-ease);
 }
 
-.theme-toggle:hover~.theme-toggle-label,
-.theme-toggle:focus-visible~.theme-toggle-label {
+.player-toggle:hover~.player-toggle-label,
+.player-toggle:focus-visible~.player-toggle-label {
   color: var(--text);
   opacity: 1;
 }
@@ -71,9 +81,9 @@
 /* respect reduced motion */
 @media (prefers-reduced-motion: reduce) {
 
-  .theme-toggle,
-  .theme-toggle .theme-toggle-label,
-  .theme-toggle-label {
+  .player-toggle,
+  .player-toggle .player-toggle-label,
+  .player-toggle-label {
     transition: none;
     animation: none;
   }

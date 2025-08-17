@@ -26,6 +26,7 @@ export function AudioPlayerProvider({ children }: { children: ReactNode }) {
   const soundRef = useRef<Howl | null>(null);
 
   const [playlist] = useState<SongType[]>(tracks);
+  const [showPlaylist, setShowPlaylist] = useState(false);
   const [currentTrack, setCurrentTrack] = useState<SongType | null>(null);
 
   const [playback, setPlayback] = useState(false);
@@ -203,8 +204,18 @@ export function AudioPlayerProvider({ children }: { children: ReactNode }) {
     setTrack(prevTrack, true);
   };
 
+  function formatTime(totalSeconds?: number | null) {
+    if (totalSeconds == null || Number.isNaN(totalSeconds)) return '0:00';
+    const sec = Math.max(0, Math.floor(totalSeconds));
+    const m = Math.floor(sec / 60);
+    const s = sec % 60;
+    return `${m}:${s.toString().padStart(2, '0')}`;
+  }
+
   const value: AudioProviderType = {
     playlist,
+    showPlaylist,
+    setShowPlaylist,
     playback,
     volume,
     muted,
@@ -223,7 +234,8 @@ export function AudioPlayerProvider({ children }: { children: ReactNode }) {
     setVolume: updateVolume,
     normalizedTrack: () => normalizedTrack ?? {},
     trackTitle,
-    safePct: () => safePct
+    safePct: () => safePct,
+    formatTime
   };
 
   return (

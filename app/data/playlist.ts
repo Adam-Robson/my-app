@@ -25,4 +25,4 @@ export const playlist: SongType[] = [
       album: 'hi five your self (unreleased)',
       duration: '6:49',
     }
-  ]
+  ];
