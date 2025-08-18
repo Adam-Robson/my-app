@@ -11,16 +11,15 @@
   position: relative;
   height: 5rem;
   width: 5rem;
+  flex: 0;
   display: flex;
+  flex-direction: column;
   padding: 0.6rem;
   justify-content: center;
   align-items: center;
 }
 
 .player-toggle {
-  position: absolute;
-  bottom: 3rem;
-  right: 3rem;
   z-index: 50;
   outline: none;
   padding: 0.6rem;
@@ -63,9 +62,6 @@
 }
 
 .player-toggle-label {
-  position: absolute;
-  bottom: 0;
-  left: 0;
   display: flex;
   justify-content: center;
   align-items: center;

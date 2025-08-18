@@ -10,7 +10,7 @@ export default function ThemeToggle() {
   return (
     <div className="theme-toggle-container">
       <button
-        className="theme-toggle absolute top-12 right-12"
+        className="theme-toggle"
         onClick={() => setTheme(isDark ? 'light' : 'dark')}
         title="Toggle Theme"
       >

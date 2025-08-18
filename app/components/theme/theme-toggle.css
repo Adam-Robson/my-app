@@ -7,6 +7,16 @@
   --tt-dur: 0.5s;
 }
 
+.theme-toggle-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 5rem;
+  width: 5rem;
+
+}
+
 /* Base button */
 .theme-toggle {
   color: var(--text-50);
@@ -53,10 +63,8 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding-top: 0.5rem;
   color: var(--text-50);
   opacity: 0;
-  font-weight: 500;
   transition:
     color var(--tt-dur) var(--tt-ease),
     opacity var(--tt-dur) var(--tt-ease);
