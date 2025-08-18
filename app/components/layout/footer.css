@@ -8,16 +8,20 @@
 }
 
 .player-toggle-container {
-  position: absolute;
-  right: 3rem;
-  bottom: 3rem;
+  position: relative;
+  height: 5rem;
+  width: 5rem;
   display: flex;
-  flex-direction: column;
+  padding: 0.6rem;
   justify-content: center;
   align-items: center;
 }
 
 .player-toggle {
+  position: absolute;
+  bottom: 3rem;
+  right: 3rem;
+  z-index: 50;
   outline: none;
   padding: 0.6rem;
   color: var(--text-50);
@@ -59,11 +63,13 @@
 }
 
 .player-toggle-label {
+  position: absolute;
+  bottom: 0;
+  left: 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  text-align: center;
-  padding-top: 0.5rem;
+  text-align: left;
   color: var(--text-50);
   opacity: 0;
   font-weight: 500;

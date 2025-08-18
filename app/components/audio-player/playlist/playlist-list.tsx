@@ -6,7 +6,7 @@ import { XIcon } from '@phosphor-icons/react';
 import { useAudio } from '@/app/contexts/audio-provider';
 
 
-export default function List({ tracks, onClose }: PlaylistType) {
+export default function PlaylistList({ tracks, onClose }: PlaylistType) {
   const { setTrack, currentTrack } = useAudio();
 
   return (

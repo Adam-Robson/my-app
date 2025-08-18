@@ -1,6 +1,6 @@
 
 import { XIcon } from '@phosphor-icons/react';
-import List from '@/app/components/audio-player/playlist/list';
+import PlaylistList from '@/app/components/audio-player/playlist/playlist-list';
 import { SongType } from '@/app/types/song';
 
 type PlaylistCardType = {
@@ -9,7 +9,7 @@ type PlaylistCardType = {
   setShowPlaylist: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-export default function Card({ playlist, showPlaylist, setShowPlaylist, }: PlaylistCardType) {
+export default function PlaylistCard({ playlist, showPlaylist, setShowPlaylist, }: PlaylistCardType) {
   return (
     <>
       {showPlaylist && (
@@ -47,7 +47,7 @@ export default function Card({ playlist, showPlaylist, setShowPlaylist, }: Playl
               </div>
 
               <div className="min-h-0 flex-1 overflow-y-auto p-2">
-                <List tracks={playlist} onClose={() => setShowPlaylist(false)} />
+                <PlaylistList tracks={playlist} onClose={() => setShowPlaylist(false)} />
               </div>
             </div>
           </div>

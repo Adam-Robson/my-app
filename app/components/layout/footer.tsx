@@ -16,17 +16,19 @@ export default function Footer() {
       <div className="player-toggle-container">
         <button
           className={`
-            player-toggle z-50
+            player-toggle
             ${showPlayer && 'cursor-default pointer-events-none'}
           `}
           onClick={() => setShowPlayer(true)}
           title="Show player"
         >
           <HeadphonesIcon />
+
         </button>
         <label className="player-toggle-label text-sm text-center">
           {showPlayer ? '' : 'audio'}
         </label>
+
       </div>
     </footer>
   );

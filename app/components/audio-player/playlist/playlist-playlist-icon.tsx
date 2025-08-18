@@ -4,8 +4,10 @@ import { PlaylistIcon } from '@phosphor-icons/react';
 type PlaylistIconType = {
   showPlaylist: boolean;
   setShowPlaylist: React.Dispatch<React.SetStateAction<boolean>>
+  className?: string;
 }
-export default function Icon({ setShowPlaylist, showPlaylist }: PlaylistIconType) {
+
+export default function PlaylistPlaylistIcon({ setShowPlaylist, showPlaylist }: PlaylistIconType) {
   return (
     <div className="flex items-center">
       <button

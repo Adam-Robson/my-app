@@ -11,7 +11,7 @@ import {
   XIcon,
 } from '@phosphor-icons/react';
 import Volume from '@/app/components/audio-player/volume';
-import Icon from '@/app/components/audio-player/playlist/icon';
+import PlaylistPlaylistIcon from '@/app/components/audio-player/playlist/playlist-playlist-icon';
 import Playlist from '@/app/components/audio-player/playlist/playlist';
 import { AudioPlayerType } from '@/app/types/audio-player';
 
@@ -34,24 +34,24 @@ export default function AudioPlayer({ showPlayer, setShowPlayer }: AudioPlayerTy
     setShowPlaylist
   } = useAudio();
 
-
   if (!showPlayer) return null;
 
   return (
     <div
       className={`
-        fixed left-1/2 -translate-x-1/2 bottom-6 z-[60]
-        w-[min(720px,92vw)] bg-[var(--primary-50)]
-        flex flex-col 
-        rounded-md shadow-lg p-4 
+        max-w-3xl w-full mx-auto fixed 
+        left-1/2 bottom-6 -translate-x-1/2 
+        bg-[var(--primary-50)]/70 flex flex-col
+        rounded-md shadow-lg backdrop-blur-md
+        p-4 z-50
       `}
       aria-hidden={!showPlayer}
     >
       <div
         className={`
-          audio-player relative overflow-visible
-          w-full rounded-md shadow-lg p-4 flex
-          flex-col gap-2
+          max-w-2xl mx-auto w-full relative
+          overflow-visible flex flex-col gap-2
+          rounded-md p-4
         `}
       >
         <div className="flex justify-end">
@@ -63,7 +63,7 @@ export default function AudioPlayer({ showPlayer, setShowPlayer }: AudioPlayerTy
             <XIcon className="w-5 h-5" />
           </button>
         </div>
-        <Icon showPlaylist={showPlaylist} setShowPlaylist={setShowPlaylist} />
+        <PlaylistPlaylistIcon showPlaylist={showPlaylist} setShowPlaylist={setShowPlaylist} />
         <div className={`
           relative grid 
           grid-cols-[auto,1fr,auto] 
@@ -80,22 +80,8 @@ export default function AudioPlayer({ showPlayer, setShowPlayer }: AudioPlayerTy
                   : trackTitle || 'No song loaded'
             }
           >
-            {loading ? (
-              <span className="inline-flex items-center gap-2">
-                <SpinnerBallIcon className="w-4 h-4" />
-                Loading…
-              </span>
-            ) : error ? (
-              <span className="inline-flex items-center gap-2 text-red-400">
-                <WarningIcon className="w-4 h-4" />
-                Playback error
-              </span>
-            ) : trackTitle ? (
-              trackTitle
-            ) : (
-              'No song loaded'
-            )}
           </div>
+
 
           <div className="flex justify-evenly items-end gap-3 shrink-0">
             <button onClick={previous} disabled={loading} title="Previous">
@@ -115,13 +101,13 @@ export default function AudioPlayer({ showPlayer, setShowPlayer }: AudioPlayerTy
             <button onClick={next} disabled={loading} title="Next">
               <SkipForwardIcon className="w-5 h-5" />
             </button>
-            <div className="max-w-sm w-full">
+            <div className="max-w-xs w-full">
               <Volume />
             </div>
           </div>
         </div>
         {showPlaylist && <Playlist />}
-        <div className="flex items-center gap-2 text-xs text-neutral-400">
+        <div className="flex items-center gap-2 text-xs">
           <span className="tabular-nums">{formatTime(elapsed)}</span>
           <div className="flex-grow bg-neutral-700 rounded h-1 overflow-hidden">
             <div
