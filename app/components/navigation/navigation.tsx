@@ -8,8 +8,8 @@ import {
 } from '@phosphor-icons/react';
 import { type NavlinkType } from '@/app/types/navlink'
 import Navlink from '@/app/components/navigation/navlink';
-import '@/app/components/navigation/navigation.css';
 import SVGComponent from '@/app/components/navigation/svg-component';
+import '@/app/components/navigation/navigation.css';
 
 export const navlinks: NavlinkType[] = [
   {
