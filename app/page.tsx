@@ -1,9 +1,9 @@
 'use client';
 
-import Header from '@/app/components/layout/header';
-import Main from '@/app/components/layout/main';
-import Footer from '@/app/components/layout/footer';
-import Providers from '@/app/components/providers/providers';
+import Header from '@/components/layout/header';
+import Main from '@/components/layout/main';
+import Footer from '@/components/layout/footer';
+import Providers from '@/components/providers/providers';
 
 export default function Home() {
   return (

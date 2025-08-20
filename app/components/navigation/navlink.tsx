@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { NavlinkType } from "@/app/types/navlink";
+import { NavlinkType } from "@/types/navlink";
 
 export default function Navlink({ href, label, icon, i }: NavlinkType) {
   return (

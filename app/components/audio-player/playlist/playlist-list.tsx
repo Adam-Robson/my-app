@@ -1,9 +1,9 @@
 'use client';
 
-import { SongType } from '@/app/types/song';
-import type { PlaylistType } from '@/app/types/playlist';
+import { SongType } from '@/types/song';
+import type { PlaylistType } from '@/types/playlist';
 import { XIcon } from '@phosphor-icons/react';
-import { useAudio } from '@/app/contexts/audio-provider';
+import { useAudio } from '@/contexts/audio-provider';
 
 
 export default function PlaylistList({ tracks, onClose }: PlaylistType) {

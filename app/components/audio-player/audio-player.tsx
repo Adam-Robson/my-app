@@ -1,12 +1,12 @@
 'use client';
 
 import { motion, AnimatePresence } from 'framer-motion';
-import { useAudio } from '@/app/contexts/audio-provider';
+import { useAudio } from '@/contexts/audio-provider';
 import { PlayIcon, PauseIcon, SkipForwardIcon, SkipBackIcon, XIcon } from '@phosphor-icons/react';
-import Volume from '@/app/components/audio-player/volume';
-import PlaylistPlaylistIcon from '@/app/components/audio-player/playlist/playlist-playlist-icon';
-import PlaylistList from '@/app/components/audio-player/playlist/playlist-list';
-import { AudioPlayerType } from '@/app/types/audio-player';
+import Volume from '@/components/audio-player/volume';
+import PlaylistPlaylistIcon from '@/components/audio-player/playlist/playlist-playlist-icon';
+import PlaylistList from '@/components/audio-player/playlist/playlist-list';
+import { AudioPlayerType } from '@/types/audio-player';
 
 export default function AudioPlayer({ showPlayer, setShowPlayer }: AudioPlayerType) {
   const {
@@ -15,11 +15,9 @@ export default function AudioPlayer({ showPlayer, setShowPlayer }: AudioPlayerTy
     safePct, formatTime, showPlaylist, setShowPlaylist, playlist,
   } = useAudio();
 
-  if (!showPlayer) return null;
-
   return (
     // FIXED WRAPPER stays outside of any transformed element
-    <div className="fixed left-1/2 bottom-6 -translate-x-1/2 z-50 w-[min(56rem,calc(100vw-32px))] px-4">
+    <div className="fixed left-1/2 bottom-6 -translate-x-1/2 z-50 w-[min(32rem,calc(100vw-13rem))] px-4">
       <div className="relative">
         {/* Backdrop */}
         <AnimatePresence>
@@ -108,7 +106,7 @@ export default function AudioPlayer({ showPlayer, setShowPlayer }: AudioPlayerTy
           {showPlaylist && (
             <motion.aside
               key="sheet"
-              className="absolute top-0 right-0 z-[52] h-full w-[22rem] rounded-md shadow-xl ring-1 ring-black/10 bg-[var(--secondary)]/92 backdrop-blur-md flex flex-col"
+              className="absolute top-0 right-0 z-[52] h-full w-[22rem] rounded-md shadow-xl ring-1 ring-black/10 bg-[var(--secondary)]/70 backdrop-blur-md flex flex-col"
               initial={{ x: '100%', opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               exit={{ x: '100%', opacity: 0 }}

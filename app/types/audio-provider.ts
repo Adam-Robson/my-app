@@ -3,6 +3,7 @@ import { SongType } from "./song";
 
 export interface AudioProviderType {
   playlist: SongType[];
+  setPlaylist: React.Dispatch<React.SetStateAction<SongType[]>>
   showPlaylist: boolean;
   setShowPlaylist: React.Dispatch<React.SetStateAction<boolean>>,
   playback: boolean;

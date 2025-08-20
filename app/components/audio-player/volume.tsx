@@ -1,4 +1,4 @@
-import { useAudio } from '@/app/contexts/audio-provider';
+import { useAudio } from '@/contexts/audio-provider';
 import {
   SpeakerSimpleNoneIcon,
   SpeakerSimpleLowIcon,

@@ -1,7 +1,7 @@
-import PlaylistList from "@/app/components/audio-player/playlist/playlist-list";
-import PlaylistCard from "@/app/components/audio-player/playlist/playlist-card";
-import { useAudio } from '@/app/contexts/audio-provider';
-import { playlist as tracks } from '@/app/data/playlist';
+import PlaylistList from "@/components/audio-player/playlist/playlist-list";
+import PlaylistCard from "@/components/audio-player/playlist/playlist-card";
+import { useAudio } from '@/contexts/audio-provider';
+import { playlist as tracks } from '@/data/playlist';
 
 export default function Playlist() {
   const { playlist, showPlaylist, setShowPlaylist } = useAudio();

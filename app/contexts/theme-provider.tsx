@@ -2,14 +2,14 @@
 
 import { createContext, useContext, useEffect, useState, ReactNode } from 'react';
 
-import { type ThemeType } from '@/app/types/theme';
+import { type ThemeType } from '@/types/theme';
 
 const ThemeContext = createContext<{
   theme: ThemeType;
   setTheme: (theme: ThemeType) => void;
 }>({
   theme: 'light',
-  setTheme: () => {},
+  setTheme: () => { },
 });
 
 export function ThemeProvider({ children }: { children: ReactNode }) {

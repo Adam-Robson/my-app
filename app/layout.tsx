@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 
 import { Monda, Barlow } from "next/font/google";
 
-import PageWrapper from '@/app/components/loader/page-wrapper';
+import PageWrapper from '@/components/loader/page-wrapper';
 import "./globals.css";
 
 const monda = Monda({
@@ -15,17 +15,17 @@ const barlow = Barlow({
   variable: '--barlow',
   subsets: ['latin'],
   weight: [
-    "100", 
-    "200" , 
-    "300" , 
-    "400" , 
-    "500" , 
-    "600" , 
-    "700" , 
-    "800" , 
+    "100",
+    "200",
+    "300",
+    "400",
+    "500",
+    "600",
+    "700",
+    "800",
     "900"
   ],
-  style: ["normal" , "italic"]
+  style: ["normal", "italic"]
 });
 
 export const metadata: Metadata = {
@@ -48,7 +48,7 @@ export default function RootLayout({
         `}
       >
         <PageWrapper>
-        {children}
+          {children}
         </PageWrapper>
       </body>
     </html>

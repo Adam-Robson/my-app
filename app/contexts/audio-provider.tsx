@@ -10,8 +10,8 @@ import {
   ReactNode,
 } from 'react';
 import { Howl } from 'howler';
-import { AudioProviderType } from '@/app/types/audio-provider';
-import { playlist as tracks } from '@/app/data/playlist';
+import { AudioProviderType } from '@/types/audio-provider';
+import { playlist as tracks } from '@/data/playlist';
 import { SongType } from '../types/song';
 
 const AudioPlayerContext = createContext<AudioProviderType | undefined>(undefined);
@@ -25,7 +25,7 @@ export function useAudio(): AudioProviderType {
 export function AudioPlayerProvider({ children }: { children: ReactNode }) {
   const soundRef = useRef<Howl | null>(null);
 
-  const [playlist] = useState<SongType[]>(tracks);
+  const [playlist, setPlaylist] = useState<SongType[]>(tracks);
   const [showPlaylist, setShowPlaylist] = useState(false);
   const [currentTrack, setCurrentTrack] = useState<SongType | null>(null);
 
@@ -214,6 +214,7 @@ export function AudioPlayerProvider({ children }: { children: ReactNode }) {
 
   const value: AudioProviderType = {
     playlist,
+    setPlaylist,
     showPlaylist,
     setShowPlaylist,
     playback,

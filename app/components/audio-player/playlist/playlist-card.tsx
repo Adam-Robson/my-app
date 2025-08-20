@@ -1,6 +1,6 @@
 import { XIcon } from '@phosphor-icons/react';
-import PlaylistList from '@/app/components/audio-player/playlist/playlist-list';
-import { SongType } from '@/app/types/song';
+import PlaylistList from '@/components/audio-player/playlist/playlist-list';
+import { SongType } from '@/types/song';
 
 type PlaylistCardType = {
   playlist: SongType[];

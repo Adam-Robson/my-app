@@ -2,26 +2,28 @@
 
 :root {
   /* b&w */
+  --background: hsla(30, 11%, 11%, 1);
+  --surface: hsla(213, 8%, 23%, 1);
+  --neutral: hsla(29, 24%, 78%, 1);
+  --neutralmid: hsla(33, 6%, 35%, 1);
+  --accent1: hsla(14, 49%, 59%, 1);
+  --accent2: hsla(215, 26%, 39%, 1);
+  --highlight: hsla(39, 67%, 55%, 1);
   --eerie: hsla(0, 0%, 13%, 1);
-  --onyx: hsla(210, 1%, 16%, 1);
   --jet: hsla(210, 2%, 19%, 1);
   --space: hsla(210, 9%, 31%, 1);
   --slate: hsla(208, 7%, 46%, 1);
-  --orangey: hsla(28, 56%, 55%, 1);
-  --vermillion: hsla(4, 92%, 60%, 1);
   --cadet: hsla(195, 16%, 56%, 1);
-  --buff: hsla(28, 53%, 68%, 1);
   --puff: hsla(214, 17%, 71%, 1);
+  --buff: hsla(28, 53%, 68%, 1);
   --peach: hsla(41, 64%, 77%, 1);
   --flax: hsla(57, 68%, 78%, 1);
   --chiffon: hsla(53, 76%, 87%, 1);
   --beige: hsla(66, 64%, 94%, 1);
-  --honeydew: hsla(102, 21%, 88%, 1);
 
   --platinum: hsla(209, 35%, 87%, 1);
   --ghost: hsla(209, 23.33%, 91.33%, 1);
-  --powder: hsla(192, 24%, 92%, 1);
-  --smoke: rgb(239, 240, 240);
+  --smoke: rgb(239, 239, 240, 1);
   /* font */
   --monda: 'Monda', 'sans-serif';
   --barlow: 'Barlow', 'sans-serif';
@@ -30,38 +32,39 @@
 html[data-theme="dark"] body {
   --canvas: linear-gradient(148deg,
       black 0%,
-      var(--eerie) 81%,
-      var(--onyx) 100%);
+      var(--background) 72%,
+      var(--eerie) 91%,
+      var(--jet) 100%);
 
   background: var(--canvas);
-  --background: black;
-  --text: white;
+  --background: var(--eerie);
+  --text: var(--ghost);
   --text-50: var(--platinum);
-  --primary: var(--orangey);
+  --primary: var(--peach);
   --primary-50: var(--buff);
   --secondary: var(--cadet);
   --secondary-50: var(--puff);
-  --accent: var(--peach);
+  --accent: var(--accent1);
   --accent-50: var(--chiffon);
-  --alert: var(--vermillion);
+  --alert: var(--accent2);
   --alert-50: var(--flax);
 }
 
 html[data-theme="light"] body {
   --canvas: linear-gradient(330deg,
       hsla(209, 0%, 100%, 1) 0%,
-      hsla(209, 13.33%, 98.33%, 1) 26%,
-      hsla(209, 23.33%, 91.33%, 1) 86%,
+      var(--smoke) 26%,
+      var(--platinum) 86%,
       hsla(209, 35%, 87%, 1) 100%);
 
   background: var(--canvas);
-  --background: white;
-  --text: black;
+  --background: var(--smoke);
+  --text: var(--eerie);
   --text-50: var(--jet);
-  --primary: var(--buff);
-  --primary-50: var(--orangey);
-  --secondary: var(--puff);
-  --secondary-50: var(--cadet);
+  --primary: var(--puff);
+  --primary-50: var(--slate);
+  --secondary: var(--buff);
+  --secondary-50: var(--space);
   --accent: var(--chiffon);
   --accent-50: var(--peach);
   --alert: var(--flax);

@@ -1,5 +1,5 @@
 
-import { type SongType } from '@/app/types/song';
+import { type SongType } from '@/types/song';
 
 export interface AlbumType {
   id: string;

@@ -1,6 +1,6 @@
 'use client';
-import Navigation from "@/app/components/navigation/navigation";
-import ThemeToggle from "@/app/components/theme/theme-toggle";
+import Navigation from "@/components/navigation/navigation";
+import ThemeToggle from "@/components/theme/theme-toggle";
 
 export default function Header() {
   return (

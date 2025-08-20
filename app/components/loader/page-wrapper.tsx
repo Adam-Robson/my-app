@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import Loader from '@/app/components/loader/loader';
+import Loader from '@/components/loader/loader';
 
 export default function PageWrapper({ children }: { children: React.ReactNode }) {
   const [loading, setLoading] = useState(true);

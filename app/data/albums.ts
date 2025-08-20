@@ -1,11 +1,11 @@
-import { AlbumType } from '@/app/types/album';
+import { AlbumType } from '@/types/album';
 
-export const collections: AlbumType[] = [
+export const albums: AlbumType[] = [
   {
     id: '1',
     title: 'left static & at ease',
     artist: 'le fog',
-    cover: '/images/collections/left static & at ease.png',
+    cover: '/images/covers/left static & at ease.png',
     year: '2020',
     description: 'This is the first release from LE FOG.',
     songs: [
@@ -123,7 +123,7 @@ export const collections: AlbumType[] = [
     id: '2',
     title: 'seems real',
     artist: 'Le Fog',
-    cover: '/images/seems real.png',
+    cover: '/images/covers/seems real.png',
     year: '2020',
     description: 'This is the second release from LE FOG.',
     songs: [
@@ -223,7 +223,7 @@ export const collections: AlbumType[] = [
     id: '3',
     title: 'three',
     artist: 'Le Fog',
-    cover: '/images/three.png',
+    cover: '/images/covers/three.png',
     year: '2022',
     description: 'This is the third release from LE FOG.',
     songs: [
@@ -341,7 +341,7 @@ export const collections: AlbumType[] = [
     id: '4',
     title: 'for before i forget',
     artist: 'Le Fog',
-    cover: '/images/for before i forget.png',
+    cover: '/images/covers/for before i forget.png',
     year: '2024',
     description: 'This is the fourth release from LE FOG.',
     songs: [

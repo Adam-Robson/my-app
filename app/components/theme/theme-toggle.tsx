@@ -1,8 +1,8 @@
 'use client';
 
-import { useTheme } from '@/app/contexts/theme-provider';
+import { useTheme } from '@/contexts/theme-provider';
 import { MoonIcon, SunIcon } from '@phosphor-icons/react';
-import '@/app/components/theme/theme-toggle.css';
+import '@/components/theme/theme-toggle.css';
 
 export default function ThemeToggle() {
   const { theme, setTheme } = useTheme();

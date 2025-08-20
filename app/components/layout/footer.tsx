@@ -1,9 +1,9 @@
 'use client';
 
-import AudioPlayer from '@/app/components/audio-player/audio-player';
+import AudioPlayer from '@/components/audio-player/audio-player';
 import { HeadphonesIcon } from '@phosphor-icons/react';
 import { useState } from 'react';
-import '@/app/components/layout/footer.css';
+import '@/components/layout/footer.css';
 
 export default function Footer() {
   const [showPlayer, setShowPlayer] = useState(false);
