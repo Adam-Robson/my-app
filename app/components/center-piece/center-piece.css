@@ -1,0 +1,15 @@
+ .lf-word {
+   opacity: 0;
+   will-change: opacity;
+   transition-property: opacity;
+ }
+
+ .lf-word.is-active {
+   opacity: 1;
+ }
+
+ @media (prefers-reduced-motion: reduce) {
+   .lf-word {
+     transition-duration: 0s !important;
+   }
+ }
